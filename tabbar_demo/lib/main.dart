@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'bottom_navigation_widget.dart';
+import 'FirstPage.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:BottomNavigationWidget()
+      // home:BottomNavigationWidget()
+      home:FirstPage()
     );
   }
 }
