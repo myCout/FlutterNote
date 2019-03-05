@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-class CategoryPage extends StatelessWidget {
-  TextEditingController typeController = TextEditingController();
+// class CategoryPage extends StatelessWidget {
+  class CategoryPage extends StatefulWidget {
+    final Widget child;
+  
+    CategoryPage({Key key, this.child}) : super(key: key);
+  
+    _CategoryPageState createState() => _CategoryPageState();
+  }
+  
+  class _CategoryPageState extends State<CategoryPage> {
+    TextEditingController typeController = TextEditingController();
   String showText = '欢迎你来到美好人间';
   @override
   Widget build(BuildContext context) {
