@@ -5,7 +5,14 @@ import 'package:flutter_shop/service/service_method.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'dart:convert';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'ad_banner.dart';
+import 'leader_phone.dart';
 
+// String advertesPicture = data['data']['advertesPicture']['PICTURE_ADDRESS']; //广告图片
+//               AdBanner(advertesPicture:advertesPicture);   //广告组件  
+// String  leaderImage= data['data']['shopInfo']['leaderImage'];  //店长图片
+// String  leaderPhone = data['data']['shopInfo']['leaderPhone']; //店长电话 
+// LeaderPhone(leaderImage:leaderImage,leaderPhone: leaderPhone)  //广告组件  
 class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
