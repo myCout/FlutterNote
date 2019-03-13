@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'ad_banner.dart';
 import 'leader_phone.dart';
 import 'top_navigator.dart';
+import 'recommend.dart';
 
 // String advertesPicture = data['data']['advertesPicture']['PICTURE_ADDRESS']; //广告图片
 //               AdBanner(advertesPicture:advertesPicture);   //广告组件  
@@ -47,14 +48,26 @@ class _HomePageState extends State<HomePage> {
               String advertesPicture = data['data']['advertesPicture']['PICTURE_ADDRESS']; //广告图片
               String  leaderImage= data['data']['shopInfo']['leaderImage'];  //店长图片
               String  leaderPhone = data['data']['shopInfo']['leaderPhone']; //店长电话 
-              return Column(
-                children: <Widget>[
-                  SwiperDiy(swiperDataList:swiperDataList),
-                  TopNavigator(navigatorList:navigatorList),   //导航组件
-                  AdBanner(advertesPicture:advertesPicture),   //广告组件  
-                  LeaderPhone(leaderImage:leaderImage,leaderPhone: leaderPhone)  //广告组件  
-                ],
-              );
+              List<Map> recommendList = (data['data']['recommend'] as List).cast(); // 商品推荐
+              return SingleChildScrollView(
+                  child: Column(
+                      children: <Widget>[
+                          SwiperDiy(swiperDataList:swiperDataList ),   //页面顶部轮播组件
+                          TopNavigator(navigatorList:navigatorList),   //导航组件
+                          AdBanner(advertesPicture:advertesPicture), 
+                          LeaderPhone(leaderImage:leaderImage,leaderPhone: leaderPhone),  //广告组件  
+                          Recommend(recommendList:recommendList),    
+                        ],
+                    ) ,
+                );
+              // return Column(
+              //   children: <Widget>[
+              //     SwiperDiy(swiperDataList:swiperDataList),
+              //     TopNavigator(navigatorList:navigatorList),   //导航组件
+              //     AdBanner(advertesPicture:advertesPicture),   //广告组件  
+              //     LeaderPhone(leaderImage:leaderImage,leaderPhone: leaderPhone)  //广告组件  
+              //   ],
+              // );
             }else{
               return Center(
                 child: Text('加载中'),
