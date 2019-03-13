@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'ad_banner.dart';
 import 'leader_phone.dart';
+import 'top_navigator.dart';
 
 // String advertesPicture = data['data']['advertesPicture']['PICTURE_ADDRESS']; //广告图片
 //               AdBanner(advertesPicture:advertesPicture);   //广告组件  
@@ -39,9 +40,19 @@ class _HomePageState extends State<HomePage> {
             if (snapshot.hasData) {
               var data =json.decode(snapshot.data.toString());
               List<Map> swiperDataList = (data['data']['slides'] as List).cast();//轮播
+              List<Map> navigatorList = (data['data']['category'] as List).cast(); //类别列表
+              if(navigatorList.length>10){
+                  navigatorList.removeRange(10, navigatorList.length);
+                }
+              String advertesPicture = data['data']['advertesPicture']['PICTURE_ADDRESS']; //广告图片
+              String  leaderImage= data['data']['shopInfo']['leaderImage'];  //店长图片
+              String  leaderPhone = data['data']['shopInfo']['leaderPhone']; //店长电话 
               return Column(
                 children: <Widget>[
-                  SwiperDiy(swiperDataList:swiperDataList)
+                  SwiperDiy(swiperDataList:swiperDataList),
+                  TopNavigator(navigatorList:navigatorList),   //导航组件
+                  AdBanner(advertesPicture:advertesPicture),   //广告组件  
+                  LeaderPhone(leaderImage:leaderImage,leaderPhone: leaderPhone)  //广告组件  
                 ],
               );
             }else{
