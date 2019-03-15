@@ -39,8 +39,8 @@ Future getHomePageBeloConten() async {
     return print('ERROR:==== ${e}');
   }
 }
-// 网络请求通用接口
-Future request(url,formData)async{
+// 网络请求通用接口//参数用{}包起来，表示是一个可选参数，选填
+Future request(url,{formData})async{
   try {
     print('开始获取数据..............');
     Response response;
