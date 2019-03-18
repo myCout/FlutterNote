@@ -11,7 +11,7 @@ import 'top_navigator.dart';
 import 'recommend.dart';
 import 'floor_content.dart';
 import 'floor_title.dart';
-
+import 'hot_goods.dart';
 
 // String advertesPicture = data['data']['advertesPicture']['PICTURE_ADDRESS']; //广告图片
 //               AdBanner(advertesPicture:advertesPicture);   //广告组件  
@@ -77,7 +77,8 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
                           FloorTitle(picture_address:floor2Title),
                           FloorContent(floorGoodsList:floor2),
                           FloorTitle(picture_address:floor3Title),
-                          FloorContent(floorGoodsList:floor3),   
+                          FloorContent(floorGoodsList:floor3),  
+                          HotGoods()
                         ],
                     ) ,
                 );
