@@ -18,8 +18,8 @@ class _HotGoodsState extends State<HotGoods> {
 
 
   void initState(){
-    super.initState();
     _getHotGoods();
+    super.initState();
   }
 
   
