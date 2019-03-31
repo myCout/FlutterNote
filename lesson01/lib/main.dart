@@ -58,12 +58,16 @@ void main() {
     title: 'my app',
     // home: MyScaffold(),
     // home: TutorialHome(),
-    home: ShoppingList(
-      products: <Product>[
-        new Product(name: 'Eggs'),
-        new Product(name: 'Flour'),
-        new Product(name: 'Chocolate chips'),
-      ],
+    // home: ShoppingList(
+    //   products: <Product>[
+    //     new Product(name: 'Eggs'),
+    //     new Product(name: 'Flour'),
+    //     new Product(name: 'Chocolate chips'),
+    //   ],
+    // ),
+    home: Scaffold(
+      appBar: AppBar(title: Text('图片显示'),),
+      body: TutorialHome(),
     ),
   ));
 }
@@ -72,33 +76,17 @@ class TutorialHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Scaffold是Material中主要的布局组件.
-    return new Scaffold(
-      appBar: new AppBar(
-        leading: new IconButton(
-          icon: new Icon(Icons.menu),
-          tooltip: 'Navigation menu',
-          onPressed: null,
-        ),
-        title: new Text('Example title'),
-        actions: <Widget>[
-          new IconButton(
-            icon: new Icon(Icons.search),
-            tooltip: 'Search',
-            onPressed: null,
-          ),
+    return Scaffold(
+      body: ListView(
+        children: <Widget>[
+          Center(
+            child: Image.asset('static/images/image_1.jpg',height: 900,width: 300,),
+          )
+          // Image.asset('static/images/image_1.jpg'),
         ],
       ),
-      //body占屏幕的大部分
-      body: new Center(
-        child: MyButton(),
-      ),
-      
-      floatingActionButton: new FloatingActionButton(
-        tooltip: 'Add', // used by assistive technologies
-        child: new Icon(Icons.add),
-        onPressed: null,
-      ),
     );
+      
   }
 }
 
