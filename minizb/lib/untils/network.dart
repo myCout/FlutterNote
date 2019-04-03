@@ -67,6 +67,7 @@ class Request {
     // User user = new User();
     String userHeader = '';//user.getToken();
     String urlHost = '';//user.getHost();
+    
 
     if (userHeader !=null || urlHost !=null) {
       dio.options.headers = {
