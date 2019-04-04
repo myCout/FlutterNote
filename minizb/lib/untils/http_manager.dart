@@ -26,10 +26,7 @@ import '../config/config.dart';
 class HttpManager {
     static Dio dio = Dio();
     static Future<HttpResponse> fetch(url,{
-      noTip = false,
-      dynamic params,
-      Map<String, String> header,
-      method = 'get'}) async {
+      noTip = false,dynamic params,Map<String, String> header,method = 'get'}) async {
         ///构造Headers
         Map<String, String> headers = HashMap();
         if (header != null) {
@@ -56,8 +53,8 @@ class HttpManager {
                 return HttpResponse(cacheData, true, Code.SUCCESS, headers: null);
               } else {
                 return HttpResponse(
-                    // Code.errorHandleFunction(Code.NETWORK_ERROR, "", noTip),
-                    '网络错误',
+                    Code.errorHandleFunction(Code.NETWORK_ERROR, "", noTip),
+                    // '网络错误',
                     false,
                     Code.NETWORK_ERROR);
               }

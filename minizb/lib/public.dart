@@ -1,4 +1,3 @@
 library public;
 
-// import 'untils/appcolor.dart';
-export 'package:minizb/untils/appcolor.dart';
+export 'package:minizb/untils/app_color.dart';
