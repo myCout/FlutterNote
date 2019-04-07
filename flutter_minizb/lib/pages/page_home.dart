@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'page_home_hotlive.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -50,11 +51,13 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
       ),
       body: TabBarView(
         controller: _controller,
-        children: _tabValues.map((f) {
-          return Center(
-            child: Text(f),
-          );
-        }).toList(),
+        children: <Widget>[
+          HomeHotLive(),
+          new Center(child: new Text('船')),
+          new Center(child: new Text('巴士')),
+          new Center(child: new Text('船')),
+          new Center(child: new Text('巴士')),
+        ],
       ),
     );
   }
