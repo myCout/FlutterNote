@@ -35,7 +35,9 @@ dependencies:
   flutter_redux: ^0.5.2
   connectivity: ^0.3.2
   package_info: ^0.4.0+1
-
+  flutter_swiper : ^1.1.4
+  flutter_screenutil: ^0.5.1
+  flutter_easyrefresh: ^1.2.7
 dev_dependencies:
   flutter_test:
     sdk: flutter
