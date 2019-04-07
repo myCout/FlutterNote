@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'untils/app_api.dart';
 import 'untils/app_manager.dart';
+import 'pages/app_index.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: PageIndex(),
     );
   }
 }
@@ -75,8 +76,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   Future loginTemp() async {
     var todayJson;
-      // todayJson = await APPApi.postLoginTmp();
-      todayJson = await APPApi.getLiveHot();
+      todayJson = await APPApi.postLoginTmp();
+      // todayJson = await APPApi.getLiveHot();
       print('json = %$todayJson');
   }
 
