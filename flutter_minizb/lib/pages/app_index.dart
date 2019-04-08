@@ -11,6 +11,7 @@ class PageIndex extends StatefulWidget {
 }
 
 class _PageIndexState extends State<PageIndex> {
+  
    PageController _pageController;
   final List<BottomNavigationBarItem> bottomTabs = [
     BottomNavigationBarItem(

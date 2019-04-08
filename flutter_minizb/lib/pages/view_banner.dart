@@ -19,7 +19,7 @@ class SwiperDiy extends StatelessWidget {
       width: ScreenUtil().setWidth(750),
       child: Swiper(
         itemBuilder: (BuildContext context,int index){
-          return Image.network("${swiperDataList[index]['image']}",fit:BoxFit.fill);
+          return Image.network("${swiperDataList[index]['carousel_url']}",fit:BoxFit.fill);
         },
         itemCount: swiperDataList.length,
         pagination: new SwiperPagination(),

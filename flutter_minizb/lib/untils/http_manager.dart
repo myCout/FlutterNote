@@ -38,6 +38,7 @@ class HttpManager {
         option.connectTimeout = 15000;
         Response response;
 
+        await CacheManager.init();
         //取缓存
         var cacheData = await CacheManager.get(url);
         // 检测网络状态

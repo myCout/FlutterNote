@@ -12,7 +12,7 @@ class APPApi {
   static const String API_MINI_HOST = 'http://uat.api.minizb.cn';//正式环境"http://api.minizb.cn" 
 
   static const String API_LOGIN_TEMP = "$API_MINI_HOST/j1/miniLogin/loginTmp";//游客登录;
-  static const String API_BANNER = "$API_MINI_HOST/j1/carouselDetail"; // 轮播图
+  static const String API_BANNER = "$API_MINI_HOST/v1/live/live/banner"; // 轮播图
   static const String API_LIVE_HOT = "$API_MINI_HOST/v1/live/live/hot";//直播列表 
 
 ///游客登录
@@ -46,22 +46,26 @@ static getLiveHot() async {
     return response.data;
   }
 
-  // static Map<String, String> baseHeaders = {
-  //   "packageName":"com.puxin.financePlanner",
-  //   "appName":"",
-  //   "version":"1.8.7.3",
-  //   "os":"ios",
-  //   "channel":"appStore",
-  //   "platform":"11.1999998092651",
-  //   "model":"",
-  //   "factory":"apple",
-  //   "screenSize":"(0.0, 0.0, 375.0, 667.0)",
-  //   "clientId":"15444",
-  //   "token":"7fc30ec2206ec3135ca9d33d11406b36b048e4950836a678c4642e492",
-  //   "sign":"",
-  //   "pid":"pid",
-  //   "registrationId":"pid",
-  // };
+  static getHomeBanner() async {
+   Map<String, String> params = {
+     	'app_version' :"3.1.0",
+      'app_channel' : "appStore",
+      'app_os' : "IOS",
+      'type' : "1",
+      'device_id' : "B398BC27-9981-4A6F-A455-9A405B945DD6"
+   };
+//     {
+// 	app_version = "3.1.0",
+// 	app_channel = "appStore",
+// 	app_os = "IOS",
+// 	type = "1",
+// 	device_id = "B398BC27-9981-4A6F-A455-9A405B945DD6",
+// }
+    // option.headers = headers;
+    HttpResponse response = await HttpManager.fetch(API_BANNER,params: params, method: 'post');
+    return response.data;
+  }
+
 
 
   // static const String API_DATA = "$API_MINI_HOST/api/data/";
