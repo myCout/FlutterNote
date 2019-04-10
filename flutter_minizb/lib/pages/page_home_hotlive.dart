@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_minizb/untils/app_api.dart';
 import 'view_banner.dart';
 
@@ -14,7 +15,8 @@ class _HomeHotLiveState extends State<HomeHotLive> {
 
   @override
   Widget build(BuildContext context) {
-    return layout(context);
+    // return layout(context);
+    return homeView(context);
   }
 
   @override
@@ -26,12 +28,25 @@ class _HomeHotLiveState extends State<HomeHotLive> {
   Future _getHomeBannerData() async {
     // await APPApi.postLoginTmp()
     var bannerData = await APPApi.getHomeBanner();
-    print(bannerData.toString());
-    // print('banner + $string');
+    var data = json.decode(bannerData.toString());
+    List<Map> swiperDataList = (data['d']['carousel'] as List).cast();//轮播
+    // print(swiperDataList);
     setState(() {
-      // var jsonStr = JSON.decode(bannerData);
-      _bannerArray = bannerData['d']['carousel'] ;//(bannerData['d']['carousel'] as List).cast();
+      _bannerArray = swiperDataList ;
     });
+  }
+
+  Widget homeView(BuildContext context) {
+     return EasyRefresh(
+                child: ListView(
+                  children: <Widget>[
+                    SwiperDiy(swiperDataList:_bannerArray ),   //页面顶部轮播组件
+                  ],
+                ),
+                loadMore: ()async{
+                  print('加载更多');
+                },
+              );
   }
 
   Widget layout(BuildContext context) {
@@ -49,7 +64,7 @@ class _HomeHotLiveState extends State<HomeHotLive> {
   Widget itemView(BuildContext context, int index) {
       // Model model = this._items[index];
       //设置分割线
-      if (index.isOdd) return new Divider(height: 2.0);
+      if (index.isOdd) return new Divider(height: 1.0);
       return Container(
         child: SwiperDiy(swiperDataList:_bannerArray)
       );
