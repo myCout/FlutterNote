@@ -37,6 +37,9 @@ class _HomeHotLiveState extends State<HomeHotLive> {
   }
 
   Widget homeView(BuildContext context) {
+    // return Container(
+    //   child: SwiperDiy(swiperDataList:_bannerArray ),
+    // );
      return EasyRefresh(
                 child: ListView(
                   children: <Widget>[
