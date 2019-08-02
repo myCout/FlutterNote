@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_book/Page/bookcity/page_selected.dart';
+import 'package:flutter_book/Page/bookcity/page_category.dart';
 
 class TopTabController extends StatelessWidget {
   @override
@@ -19,7 +20,7 @@ class TopTabController extends StatelessWidget {
         body: TabBarView(
           children: [
             SelectedList(),
-            Icon(Icons.directions_transit),
+            CategoryPage(),
           ],
         ),
       ),
