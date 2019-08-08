@@ -11,8 +11,8 @@ class TopTabController extends StatelessWidget {
         appBar: AppBar(
           title: TabBar(
             tabs: [
-              Tab(icon: Icon(Icons.directions_car)),
-              Tab(icon: Icon(Icons.directions_transit)),
+              Tab(text: '热映',),
+              Tab(text: 'Top250'),
             ],
           ),
           // title: Text('Tabs Demo'),

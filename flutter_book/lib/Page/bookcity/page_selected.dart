@@ -6,44 +6,58 @@ class SelectedList extends StatefulWidget {
   _SelectedListState createState() => _SelectedListState();
 }
 
-class _SelectedListState extends State<SelectedList> {
-  List widgets = [];
+class _SelectedListState extends State<SelectedList> with AutomaticKeepAliveClientMixin{
+  List movieList = [];
+  int start = 0;
+  int total = 0;
+  ScrollController scrollController = ScrollController();
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
   @override
   void initState() {
-    for (var i = 0; i < 10; i++) {
-      widgets.add(getRow(i));
-    }
+    scrollController.addListener(() => {
+      if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+        //
+      }
+    });
+    this.query(init: true);
     super.initState();
   }
 
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: widgets.length,
-      itemBuilder: (BuildContext context,int position) {
-        return getRow(position);
-      },
+    return RefreshIndicator(
+      // onRefresh: ,
+      child: ListView.builder(
+        controller: scrollController,
+        itemCount: 20,//this.movieList.length,
+        itemBuilder: (BuildContext context, int index) => MovieItem(data: 'ddd',),
+      ), onRefresh: () {},
     );
   }
 
-  Widget getRow(int i) {
-    return GestureDetector(
-      child: Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Text("Row $i"),
-      ),
-      onTap: () {
-        setState(() {
-          widgets.add(getRow(widgets.length+1));
-          print("row $i tapped");
-        });
-      },
-    );
+ query({bool init = false}) async {
+    // Map res = await api.getMovieList(
+    //     history: widget.history, start: init ? 0 : this.start);
+    // var start = res['start'];
+    // var total = res['total'];
+    // var subjects = res['subjects'];
+    setState(() {
+      if (init) {
+        // this._movieList = subjects;
+      } else {
+        // this._movieList.addAll(subjects);
+      }
+      this.start = start + 10;
+      this.total = total;
+    });
   }
+
+
+  
 }
-
-
-
  _getListData() {
     List<Widget> widgets = [];
     for (int i = 0; i < 20; i++) {
@@ -59,3 +73,50 @@ class _SelectedListState extends State<SelectedList> {
     }
     return widgets;
   }
+
+class MovieItem extends StatelessWidget {
+  final data;
+  const MovieItem({Key key, this.data}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Widget desc(k, v) => RichText(
+          text: TextSpan(
+            text: k,
+            style: DefaultTextStyle.of(context).style.copyWith(fontSize: 13),
+            children: <TextSpan>[
+              TextSpan(text: v),
+            ],
+          ),
+        );
+    return InkWell(
+      onTap: () {
+        // Navigator.pushNamed(context, 'detail', arguments: data['id']);
+      },
+      child: Container(
+        padding: EdgeInsets.all(10),
+        height: 130,
+        child: Row(
+          children: <Widget>[
+            Image.network(
+              "http://bacaojia.qiniu.xy1212.com/0/d1011fbb3f8b564.jpeg",
+              width: 100,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('名字',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                desc('豆瓣评分：', '10'),
+                desc('主演：','DEMO'),
+                desc('时长：', '100Min'),
+                desc('类型：', 'Type'),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
