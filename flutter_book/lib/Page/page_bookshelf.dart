@@ -18,7 +18,7 @@ class _BookShelfPageState extends State<BookShelfPage> {
         children: <Widget>[
           // Text("dataddddddddd"),
           UpdatedItem(model: UpdateItemModel(
-                  appIcon:"assets/icon.png",
+                  appIcon:"imgs/icon.png",
                   appDescription:"Thanks for using Google Maps! This release brings bug fixes that improve our product to help you discover new places and navigate to them.",
                   appName: "Google Maps - Transit & Fond",
                   appSize: "137.2",

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'widget/widget_bottom_tabs.dart';
 import 'package:flutter/cupertino.dart';
 import 'Page/page_home_index.dart';

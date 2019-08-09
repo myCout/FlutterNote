@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_book/App/app_color.dart';
 import 'package:flutter_book/Page/page_bookcity.dart';
 import 'package:flutter_book/Page/page_bookshelf.dart';
 import 'package:flutter_book/Page/page_profile.dart';
@@ -12,7 +14,7 @@ class BottomNavigationWidget extends StatefulWidget {
 
 class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   final _bottomNavigationColor = Colors.blue;
-  int currentIndex = 0;
+  int currentIndex = 1;
   var currentPage;
   PageController _pageController;
 
@@ -21,6 +23,17 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     BookShelfPage(),
     BookCityPage(),
     ProfileScreen()
+  ];
+
+  List<Image> _tabImages = [
+    Image.asset('imgs/tab_bookshelf_n.png'),
+    Image.asset('imgs/tab_bookstore_n.png'),
+    Image.asset('imgs/tab_me_n.png'),
+  ];
+  List<Image> _tabSelectedImages = [
+    Image.asset('imgs/tab_bookshelf_p.png'),
+    Image.asset('imgs/tab_bookstore_p.png'),
+    Image.asset('imgs/tab_me_p.png'),
   ];
 
   @override
@@ -36,6 +49,13 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     super.initState();
   }
 
+getTabIcon(int index) {
+  if (index == currentIndex) {
+    return _tabSelectedImages[index];
+  } else {
+    return _tabImages[index];
+  }
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,35 +63,13 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
         index: currentIndex,
         children: tabBodies,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                color: _bottomNavigationColor,
-              ),
-              title: Text(
-                '书架',
-                style: TextStyle(color: _bottomNavigationColor),
-              )),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.email,
-                color: _bottomNavigationColor,
-              ),
-              title: Text(
-                '书城',
-                style: TextStyle(color: _bottomNavigationColor),
-              )),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.pages,
-                color: _bottomNavigationColor,
-              ),
-              title: Text(
-                '我的',
-                style: TextStyle(color: _bottomNavigationColor),
-              ))
+      bottomNavigationBar: CupertinoTabBar(
+        backgroundColor: Colors.white,
+        activeColor: AppColor.primary,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: getTabIcon(0),title: Text('书架')),
+          BottomNavigationBarItem(icon: getTabIcon(1),title: Text('书城')),
+          BottomNavigationBarItem(icon: getTabIcon(2),title: Text('我都')),
         ],
         currentIndex: currentIndex,
         onTap: (int index) {
@@ -80,7 +78,6 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
             currentPage = tabBodies[index];
           });
         },
-        type: BottomNavigationBarType.shifting,
       ),
     );
   }

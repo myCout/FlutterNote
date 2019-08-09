@@ -1,44 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_book/widget/widget_banner.dart';
+import 'package:flutter_book/widget/widget_collection.dart';
 
 class SelectedList extends StatefulWidget {
-  SelectedList({Key key}):super(key : key);
+  SelectedList({Key key}) : super(key: key);
   @override
   _SelectedListState createState() => _SelectedListState();
 }
 
-class _SelectedListState extends State<SelectedList> with AutomaticKeepAliveClientMixin{
+class _SelectedListState extends State<SelectedList>
+    with AutomaticKeepAliveClientMixin {
   List movieList = [];
   int start = 0;
   int total = 0;
   ScrollController scrollController = ScrollController();
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
   @override
   void initState() {
     scrollController.addListener(() => {
-      if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
-        //
-      }
-    });
+          if (scrollController.position.pixels ==
+              scrollController.position.maxScrollExtent)
+            {
+              //getMore();
+            }
+        });
     this.query(init: true);
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
       // onRefresh: ,
       child: ListView.builder(
-        controller: scrollController,
-        itemCount: 20,//this.movieList.length,
-        itemBuilder: (BuildContext context, int index) => MovieItem(data: 'ddd',),
-      ), onRefresh: () {},
+          controller: scrollController,
+          itemCount: 20, //this.movieList.length,
+          itemBuilder: (BuildContext context, int index) {
+            switch (index) {
+              case 0:
+              List testData = [
+                'http://img-tailor.11222.cn/pm/book/operate/2019010321241999.jpg',
+                'http://img-tailor.11222.cn/pm/book/operate/2019010321241999.jpg',
+                'http://img-tailor.11222.cn/pm/book/operate/2019010321241999.jpg',
+                'http://img-tailor.11222.cn/pm/book/operate/2019010321241999.jpg',
+                'http://img-tailor.11222.cn/pm/book/operate/2019010321241999.jpg',
+                'http://img-tailor.11222.cn/pm/book/operate/2019010321241999.jpg',
+              ];
+                return BannerWidget(dataArray: testData);
+                break;
+              default:
+            }
+            return CollectionWidget();
+            // return MovieItem(data: 'add',);
+          }),
+      onRefresh: () {},
     );
   }
 
- query({bool init = false}) async {
+  query({bool init = false}) async {
     // Map res = await api.getMovieList(
     //     history: widget.history, start: init ? 0 : this.start);
     // var start = res['start'];
@@ -54,25 +74,29 @@ class _SelectedListState extends State<SelectedList> with AutomaticKeepAliveClie
       this.total = total;
     });
   }
-
-
-  
 }
- _getListData() {
-    List<Widget> widgets = [];
-    for (int i = 0; i < 20; i++) {
-      widgets.add(GestureDetector(
-        child: Padding(
-          padding: EdgeInsets.all(10.0),
-          child: Text("Row $i"),
-        ),
-        onTap: () {
-          print("row $i tapped");
-        },
-      ));
-    }
-    return widgets;
+
+getMore() {
+  // if (start < total) {
+  //   query();
+  // }
+}
+
+_getListData() {
+  List<Widget> widgets = [];
+  for (int i = 0; i < 20; i++) {
+    widgets.add(GestureDetector(
+      child: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Text("Row $i"),
+      ),
+      onTap: () {
+        print("row $i tapped");
+      },
+    ));
   }
+  return widgets;
+}
 
 class MovieItem extends StatelessWidget {
   final data;
@@ -106,10 +130,9 @@ class MovieItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text('名字',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('名字', style: TextStyle(fontWeight: FontWeight.bold)),
                 desc('豆瓣评分：', '10'),
-                desc('主演：','DEMO'),
+                desc('主演：', 'DEMO'),
                 desc('时长：', '100Min'),
                 desc('类型：', 'Type'),
               ],
