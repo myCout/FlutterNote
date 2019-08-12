@@ -9,7 +9,7 @@ class BannerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.instance = ScreenUtil(width: 750,height: 1334)..init(context);
+    // ScreenUtil.instance = ScreenUtil(width: 750,height: 1334)..init(context);
     print('设备宽度:${ScreenUtil.screenWidth}');
     print('设备高度:${ScreenUtil.screenHeight}');
     // print('底部安全区距离:${ScreenUtil.bottomBarHeight}');

@@ -4,6 +4,7 @@ import 'package:flutter_book/App/app_color.dart';
 import 'package:flutter_book/Page/page_bookcity.dart';
 import 'package:flutter_book/Page/page_bookshelf.dart';
 import 'package:flutter_book/Page/page_profile.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class BottomNavigationWidget extends StatefulWidget {
@@ -58,6 +59,7 @@ getTabIcon(int index) {
 }
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.instance = ScreenUtil(width: 750,height: 1334)..init(context);
     return Scaffold(
       body: IndexedStack(
         index: currentIndex,

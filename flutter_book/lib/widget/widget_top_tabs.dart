@@ -29,13 +29,6 @@ class TopTabController extends StatelessWidget {
           ),
           backgroundColor: AppColor.white,
           elevation: 0,
-          // title: TabBar(
-          //   tabs: [
-          //     Tab(text: '热映',),
-          //     Tab(text: 'Top250'),
-          //   ],
-          // ),
-          // // title: Text('Tabs Demo'),
         ),
         body: TabBarView(
           children: [

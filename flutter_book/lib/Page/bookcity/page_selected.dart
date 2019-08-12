@@ -35,7 +35,7 @@ class _SelectedListState extends State<SelectedList>
       // onRefresh: ,
       child: ListView.builder(
           controller: scrollController,
-          itemCount: 20, //this.movieList.length,
+          itemCount: 3, //this.movieList.length,
           itemBuilder: (BuildContext context, int index) {
             switch (index) {
               case 0:
@@ -49,10 +49,14 @@ class _SelectedListState extends State<SelectedList>
               ];
                 return BannerWidget(dataArray: testData);
                 break;
+              case 1:
+                return CollectionWidget();
+                break;
+
               default:
+                return MovieItem(data: 'add',);
             }
-            return CollectionWidget();
-            // return MovieItem(data: 'add',);
+            
           }),
       onRefresh: () {},
     );
