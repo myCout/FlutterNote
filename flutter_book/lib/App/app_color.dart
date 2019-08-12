@@ -3,10 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class AppColor {
-  static Color  cc = Colors.red;
+  static Color red = Colors.red;
   static Color primary = Color(0xff23b38e);
   static Color secondary = Color(0xff51dec6);
-  static Color red = Color(0xFFFF2B45);
+  // static Color red = Color(0xFFFF2B45);
   static Color orange = Color(0xFFF67264);
   static Color white = Color(0xFFFFFFFF);
   static Color paper = Color(0xFFF5F5F5);

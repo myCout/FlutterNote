@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_book/utility/app_api.dart';
+import 'package:flutter_book/utility/http_manager.dart';
 import 'package:flutter_book/widget/widget_banner.dart';
 import 'package:flutter_book/widget/widget_collection.dart';
 
@@ -10,7 +12,7 @@ class SelectedList extends StatefulWidget {
 
 class _SelectedListState extends State<SelectedList>
     with AutomaticKeepAliveClientMixin {
-  List movieList = [];
+  List bannerDataList = [];
   int start = 0;
   int total = 0;
   ScrollController scrollController = ScrollController();
@@ -18,6 +20,7 @@ class _SelectedListState extends State<SelectedList>
   bool get wantKeepAlive => true;
   @override
   void initState() {
+    super.initState();
     scrollController.addListener(() => {
           if (scrollController.position.pixels ==
               scrollController.position.maxScrollExtent)
@@ -25,8 +28,7 @@ class _SelectedListState extends State<SelectedList>
               //getMore();
             }
         });
-    this.query(init: true);
-    super.initState();
+    getBanner();
   }
 
   @override
@@ -39,43 +41,27 @@ class _SelectedListState extends State<SelectedList>
           itemBuilder: (BuildContext context, int index) {
             switch (index) {
               case 0:
-              List testData = [
-                'http://img-tailor.11222.cn/pm/book/operate/2019010321241999.jpg',
-                'http://img-tailor.11222.cn/pm/book/operate/2019010321241999.jpg',
-                'http://img-tailor.11222.cn/pm/book/operate/2019010321241999.jpg',
-                'http://img-tailor.11222.cn/pm/book/operate/2019010321241999.jpg',
-                'http://img-tailor.11222.cn/pm/book/operate/2019010321241999.jpg',
-                'http://img-tailor.11222.cn/pm/book/operate/2019010321241999.jpg',
-              ];
-                return BannerWidget(dataArray: testData);
+                BannerWidget(dataArray: bannerDataList);
                 break;
               case 1:
-                return CollectionWidget();
+                CollectionWidget();
                 break;
 
               default:
-                return MovieItem(data: 'add',);
+                MovieItem(
+                  data: 'add',
+                );
             }
-            
           }),
       onRefresh: () {},
     );
   }
 
-  query({bool init = false}) async {
-    // Map res = await api.getMovieList(
-    //     history: widget.history, start: init ? 0 : this.start);
-    // var start = res['start'];
-    // var total = res['total'];
-    // var subjects = res['subjects'];
+  Future getBanner() async {
+    var bannerList = AppAPI.getHomeBanner();
     setState(() {
-      if (init) {
-        // this._movieList = subjects;
-      } else {
-        // this._movieList.addAll(subjects);
-      }
-      this.start = start + 10;
-      this.total = total;
+      this.bannerDataList = bannerList;
+      // _currentDate = '今日最新干货';
     });
   }
 }
