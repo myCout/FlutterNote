@@ -1,67 +1,90 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_book/Model/ModModel.dart';
+import 'package:flutter_book/Page/View/view_firstModule.dart';
+import 'package:flutter_book/Page/View/view_secendModule.dart';
+import 'package:flutter_book/Page/View/view_thirdModule.dart';
 import 'package:flutter_book/utility/app_api.dart';
-import 'package:flutter_book/utility/http_manager.dart';
 import 'package:flutter_book/widget/widget_banner.dart';
-import 'package:flutter_book/widget/widget_collection.dart';
+import '../../Model/BannerModel.dart';
+// 异步 Future
+import 'dart:async';
 
 class SelectedList extends StatefulWidget {
-  SelectedList({Key key}) : super(key: key);
   @override
   _SelectedListState createState() => _SelectedListState();
 }
 
-class _SelectedListState extends State<SelectedList>
-    with AutomaticKeepAliveClientMixin {
-  List bannerDataList = [];
-  int start = 0;
-  int total = 0;
-  ScrollController scrollController = ScrollController();
-  @override
-  bool get wantKeepAlive => true;
+class _SelectedListState extends State<SelectedList> {
+  List<BannerModel> _bannerDataList = [];
+  List<ModModel> _modList = [];
   @override
   void initState() {
-    super.initState();
-    scrollController.addListener(() => {
-          if (scrollController.position.pixels ==
-              scrollController.position.maxScrollExtent)
-            {
-              //getMore();
-            }
-        });
     getBanner();
+    getHomeMod();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      // onRefresh: ,
-      child: ListView.builder(
-          controller: scrollController,
-          itemCount: 3, //this.movieList.length,
-          itemBuilder: (BuildContext context, int index) {
-            switch (index) {
-              case 0:
-                BannerWidget(dataArray: bannerDataList);
-                break;
-              case 1:
-                CollectionWidget();
-                break;
-
-              default:
-                MovieItem(
-                  data: 'add',
-                );
-            }
-          }),
-      onRefresh: () {},
-    );
+    return Container(
+        child: ListView.builder(
+      itemCount: _modList.length + 1,
+      // itemExtent: 150, //强制高度
+      itemBuilder: (BuildContext context, int index) {
+        return buildModul(context, index);
+      },
+    ));
   }
 
-  Future getBanner() async {
-    var bannerList = AppAPI.getHomeBanner();
+  Widget buildModul(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+        return BannerWidget(dataArray: _bannerDataList);
+        break;
+      case 1:
+        return FirstModulView(
+          modModel: _modList[index - 1],
+        );
+        break;
+      case 2:
+        return SecendModuleView(
+          modModel: _modList[index - 1],
+        );
+        break;
+      case 3:
+        return ThirdModuleView(
+          modModel: _modList[index - 1],
+        );
+        break;
+      default:
+        return Container();
+    }
+  }
+
+  Future<void> getBanner() async {
+    var jsonString = await AppAPI.getHomeBanner();
+    List<dynamic> originList = jsonString['data']['list'];
+    BannerList bannerList = BannerList.fromJson(originList);
+//////    bannerList.photos.forEach((item) => {
+//////      print('dadadsad : ${item.title}')
+//////    });
     setState(() {
-      this.bannerDataList = bannerList;
-      // _currentDate = '今日最新干货';
+      _bannerDataList = bannerList.photos;
+    });
+  }
+
+  Future<void> getHomeMod() async {
+    var jsonString = await AppAPI.getHomeMod();
+    List<dynamic> originList = jsonString['data']['list'];
+
+//    print('success :' + originList.toString());
+    ModList list = ModList.fromJson(originList);
+    print('success + ${list.mList.length}');
+    _modList = list.mList;
+    // list.mList.forEach((item) => {print('dadadsad : ${item.intro}')});
+
+    setState(() {
+      this._modList = list.mList;
     });
   }
 }
@@ -70,22 +93,6 @@ getMore() {
   // if (start < total) {
   //   query();
   // }
-}
-
-_getListData() {
-  List<Widget> widgets = [];
-  for (int i = 0; i < 20; i++) {
-    widgets.add(GestureDetector(
-      child: Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Text("Row $i"),
-      ),
-      onTap: () {
-        print("row $i tapped");
-      },
-    ));
-  }
-  return widgets;
 }
 
 class MovieItem extends StatelessWidget {

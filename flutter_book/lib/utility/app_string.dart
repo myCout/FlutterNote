@@ -1,7 +1,7 @@
 ///此类定义了app中所有的字符串常量.
 class AppStrings {
   static const STRING_DB_FAVORITE = "favorites.db";
-  static const STRING_DB_CACHE = "caches.db";
+  static const STRING_DB_CACHE = "abook.db";
 
   static const FLUTTER_NATIVE_PLUGIN_CHANNEL_NAME =
       'com.lijnshanmx/FlutterNativePlugin';

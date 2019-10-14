@@ -8,7 +8,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="flutter_book"
+        android:label="壹本小说"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

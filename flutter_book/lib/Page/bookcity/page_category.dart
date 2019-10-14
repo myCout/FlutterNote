@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_book/Model/UpdateItemModel.dart';
 
 class CategoryPage extends StatefulWidget {
   @override
@@ -19,5 +18,3 @@ class _CategoryPageState extends State<CategoryPage> {
     );
   }
 }
-
-

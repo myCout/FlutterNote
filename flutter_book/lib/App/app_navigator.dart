@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_book/Model/Book.dart';
+import 'package:flutter_book/Page/bookcity/page_novel_detail.dart';
+import 'package:flutter_book/Page/page_login.dart';
 
 class AppNavigator {
   static push(BuildContext context, Widget widget) {
-      Navigator.push(context, MaterialPageRoute(
-        builder: (BuildContext context) => widget,
-      )    
-    );
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => widget,
+        ));
+  }
+// 使用 Navigator.of(context).push(CustomRoute(SecondPage()))),
+
+  static pushNovelDetail(BuildContext context, Book model) {
+    AppNavigator.push(context, NovelDetailPage(bookModel: model));
   }
 
-  // static pushNovelDetail(BuildContext context, Novel novel) {
-  //   AppNavigator.push(context, NovelDetailPage(novel.id));
-  // }
-
-  // static pushLogin(BuildContext context) {
-  //   Navigator.push(context, MaterialPageRoute(builder: (context) {
-  //     return LoginScene();
-  //   }));
-  // }
+   static pushLogin(BuildContext context) {
+     AppNavigator.push(context,LoginPage());
+   }
 
 }

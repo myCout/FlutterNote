@@ -1,72 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_book/App/app_color.dart';
-import 'package:flutter_book/App/app_screen.dart';
-import 'package:flutter_book/Model/NovelModel.dart';
-import 'package:flutter_book/widget/widget_novelcover_image.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:vector_math/vector_math_64.dart' as Vector;
+import 'package:flutter_book/Model/Book.dart';
+import 'package:flutter_book/widget/widget_collection_cell.dart';
+
+// import 'package:flutter_book/App/app_color.dart';
+// import 'package:flutter_book/App/app_navigator.dart';
+// import 'package:flutter_book/App/app_screen.dart';
+// import 'package:flutter_book/Model/NovelModel.dart';
+// import 'package:flutter_book/widget/widget_cover_view.dart';
+// import 'package:flutter_book/widget/widget_novelcover_image.dart';
 
 class CollectionWidget extends StatelessWidget {
-  List<Widget> list = [
-    // this.buildPhoto(),
-    buildPhoto(),
-    buildPhoto(),
-    buildPhoto(),
-    buildPhoto(),
-    // buildPhoto(),
-    // buildPhoto(),
-  ];
+  final List<Book> dataSource;
+
+  const CollectionWidget({Key key, this.dataSource}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
+    // var width = Screen.width;
     return Container(
-      color: Colors.blueGrey,
-      padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
-      child: Wrap(
-        spacing: 15.0, // 主轴(水平)方向间距
-        runSpacing: 10.0, // 纵轴（垂直）方向间距
-        alignment: WrapAlignment.start, //沿主轴方向居中
-        children: list,),
-    );
-  }
-}
-
-Widget buildPhoto() {
-  // var width = Screen.width;
-  // var height = width * 1.25;
-  NovelModel model;
-  // model.imgUrl = 'http://img-tailor.11222.cn/pm/book/operate/2019010321241999.jpg';
-  // model.name = '鹿鼎记';
-  // model.author = '金庸';
-  return NovelCell(model: model);
-}
-
-class NovelCell extends StatelessWidget {
-
-  final NovelModel model;
-  const NovelCell({Key key, this.model}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    var width = (Screen.width - 15*2 - 15*3)/4;
-    return GestureDetector(
-      onTap: () {
-
-      },
-      child: Container(
-        width: width,
-        color: AppColor.red,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,//竖直方向，从上往下布局
-          children: <Widget>[
-            NovelCovelImageWidget(imgUrl: 'http://img-tailor.11222.cn/pm/book/operate/2019010321241999.jpg',width: width,height: width/0.75,),
-            SizedBox(height: 5,),
-            Text( '鹿鼎记', overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold), maxLines: 1,),
-            SizedBox(height: 3,),
-            Text('金庸',style: TextStyle(fontSize: 12, color: AppColor.gray),maxLines: 1,),
-          ],
+      color: AppColor.white,
+      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+      child: GridView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 4, //每行个数
+          childAspectRatio: 0.55, //宽高比为1
+          crossAxisSpacing: 10.0, //横轴间距
         ),
+        itemCount: dataSource.length,
+        itemBuilder: (context, index) {
+          return Container(
+              color: AppColor.white,
+              child: BookCollectionCell(model: dataSource[index]));
+        },
       ),
     );
   }

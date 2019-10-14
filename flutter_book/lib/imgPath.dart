@@ -1,6 +1,8 @@
 class Assets {
   static final String assetsImgsIconAvatar = 'assets/imgs/icon_user_avatar.png';
 
+  static final String assetsImgsImgMeizi = 'assets/imgs/img_meizi.jpg';
+
   /// ![](http://127.0.0.1:9527/assets/imgs/actionbar_checkin.png)
   static final String assetsImgsActionbarCheckin =
       'assets/imgs/actionbar_checkin.png';

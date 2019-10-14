@@ -1,3 +1,23 @@
+
+class BannerList {
+    final List<BannerModel> photos;
+
+    BannerList({
+        this.photos,
+    });
+
+    factory BannerList.fromJson(List<dynamic> parsedJson) {
+
+        List<BannerModel> photos = new List<BannerModel>();
+        photos = parsedJson.map((i)=>BannerModel.fromJson(i)).toList();
+
+        return new BannerList(
+            photos: photos
+        );
+    }
+}
+
+
 class BannerModel {
     String adBigPic;
     String adPic;

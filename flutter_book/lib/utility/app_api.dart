@@ -3,8 +3,11 @@ import 'http_response.dart';
 
 class AppAPI {
   /// api urls.
-  static const String API_ABOOK_HOST = 'http://39.96.26.224:8081';//正式环境"http://api.minizb.cn" 
-  static const String API_HOME_BANNER = "$API_ABOOK_HOST/home/banner";//banner GET
+  static const String API_ABOOK_HOST = 'http://novel-api.test.harmight.com:8081';//''http://39.96.26.224:8081'; //正式环境
+  static const String API_HOME_BANNER =
+      "$API_ABOOK_HOST/home/banner"; //banner GET
+  static const String API_HOME_MOD =
+      "$API_ABOOK_HOST/home/mod";
 
   //游客登录
   // static postLoginTmp() async {
@@ -18,38 +21,36 @@ class AppAPI {
   // }
 
   static getLiveHot() async {
-     Map<String, String> params = {
-       	'app_version' :"3.1.0",
-        'app_channel' : "appStore",
-        'app_os' : "IOS",
-        'type' : "1",
-        'device_id' : "B398BC27-9981-4A6F-A455-9A405B945DD6"
-     };
-      // option.headers = headers;
-    HttpResponse response = await HttpManager.fetch(API_ABOOK_HOST,params: params, method: 'post');
+    Map<String, String> params = {
+      'app_version': "3.1.0",
+      'app_channel': "appStore",
+      'app_os': "IOS",
+      'type': "1",
+      'device_id': "B398BC27-9981-4A6F-A455-9A405B945DD6"
+    };
+    // option.headers = headers;
+    HttpResponse response =
+        await HttpManager.fetch(API_ABOOK_HOST, params: params, method: 'post');
     return response.data;
   }
 
-
   static getHomeBanner() async {
-   Map<String, String> params = {
-     	'app_version' :"3.1.0",
-      'app_channel' : "appStore",
-      'app_os' : "IOS",
-      'type' : "1",
-      'device_id' : "B398BC27-9981-4A6F-A455-9A405B945DD6"
-   };
-//     {
-// 	app_version = "3.1.0",
-// 	app_channel = "appStore",
-// 	app_os = "IOS",
-// 	type = "1",
-// 	device_id = "B398BC27-9981-4A6F-A455-9A405B945DD6",
-// }
+    //  Map<String, String> params = {
+    //    	'app_version' :"3.1.0",
+    //     'app_channel' : "appStore",
+    //     'app_os' : "IOS",
+    //     'type' : "1",
+    //     'device_id' : "B398BC27-9981-4A6F-A455-9A405B945DD6"
+    //  };
     // option.headers = headers;
     HttpResponse response = await HttpManager.fetch(API_HOME_BANNER);
     return response.data;
   }
+  static getHomeMod() async {
+    HttpResponse response = await HttpManager.fetch(API_HOME_MOD);
+    return response.data;
+  }
+
 
 // ///获取最新一天的数据
   // static getTodayData() async {
