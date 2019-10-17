@@ -24,3 +24,6 @@ export 'package:extended_image/extended_image.dart';
 export 'package:flutter_book/utility/app_utils.dart';
 
 export 'package:flutter_book/imgPath.dart';
+
+//widget
+export 'package:flutter_book/widget/widget_cover_image.dart';

@@ -26,7 +26,7 @@ class CollectionWidget extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 4, //每行个数
-          childAspectRatio: 0.55, //宽高比为1
+          childAspectRatio: 0.52, //宽高比为1
           crossAxisSpacing: 10.0, //横轴间距
         ),
         itemCount: dataSource.length,

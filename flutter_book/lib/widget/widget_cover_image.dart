@@ -22,12 +22,12 @@ class NovelCoverImage extends StatelessWidget {
         width: width,
         height: height,
         cache: true,
-        border: Border.all(color: Colors.red, width: 1.0),
+        // border: Border.all(color: Colors.red, width: 1.0),
         // shape: boxShape,
         // borderRadius: BorderRadius.all(Radius.circular(30.0)),
         // color: AppColor.primary,
       ),
-      decoration: BoxDecoration(border: Border.all(color: AppColor.paper)),
+      // decoration: BoxDecoration(border: Border.all(color: AppColor.paper)),
     );
   }
 }

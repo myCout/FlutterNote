@@ -79,7 +79,7 @@ class _SelectedListState extends State<SelectedList> {
 
 //    print('success :' + originList.toString());
     ModList list = ModList.fromJson(originList);
-    print('success + ${list.mList.length}');
+    // print('success + ${list.mList.length}');
     _modList = list.mList;
     // list.mList.forEach((item) => {print('dadadsad : ${item.intro}')});
 

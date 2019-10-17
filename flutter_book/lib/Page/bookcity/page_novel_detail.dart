@@ -37,11 +37,8 @@ class _NovelDetailPageState extends State<NovelDetailPage> with RouteAware {
               height: ScreenUtil().setHeight(110),
               child: Row(
                 children: <Widget>[
-                  CoverView(
-                    model: model,
-                    width: width,
-                    height: width / .75,
-                  ),
+                  NovelCoverImage(
+                      imgUrl: model.cover, width: width, height: width / .7),
                   Container(
                     // color: AppColor.blue,
                     margin: EdgeInsets.fromLTRB(10, 0, 0, 0),

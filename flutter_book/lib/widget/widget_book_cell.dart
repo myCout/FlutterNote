@@ -11,16 +11,30 @@ class BookCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = (Screen.width - 50) / 4;
+    var imgWidth = (Screen.width - 50) / 4;
+    var imgHeight = imgWidth / .7;
     return Container(
-      height: ScreenUtil().setHeight(100),
+      height: imgHeight + 10,
       color: AppColor.white,
       padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
       child: Row(
         // textDirection: TextDirection.ltr,
         // mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          CoverView(model: bookModel, width: width, height: width / .75),
+          // CoverView(model: bookModel, width: width, height: height),
+          // ExtendedImage.network(
+          //   bookModel.cover,
+          //   // color: AppColor.primary,
+          //   fit: BoxFit.cover,
+          //   width: imgWidth + 1,
+          //   height: imgHeight,
+          //   cache: true,
+          //   // border: Border.all(color: Colors.red, width: 10.0),
+          //   // shape: boxShape,
+          //   // borderRadius: BorderRadius.all(Radius.circular(30.0)),
+          // ),
+          NovelCoverImage(
+              imgUrl: bookModel.cover, width: imgWidth, height: imgHeight),
           BookDetail(context, bookModel)
         ],
       ),

@@ -9,6 +9,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  ScrollController _controller;//ListView控制器
+  bool isToTop = false;//标示目前是否需要启用 "Top" 按钮
   List<Widget> cellList = [];
   List dataSource = [
     {'icon': 'icon0', 'name': '清理缓存'},
@@ -31,58 +33,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     super.initState();
-//    for (var i = 0; i < dataSource.length; i++) {
-//      cellList.add(getRow(dataSource[i]));
-//    }
+    _controller = ScrollController();
+    _controller.addListener((){
+      if(_controller.offset > 1000){//如果ListView已经向下滚动了1000，则启动Top按钮
+        setState(() {
+          isToTop = true;
+        });
+      }else if(_controller.offset < 300) {
+        setState(() {
+          isToTop = false;
+        });
+      }
+    });
   }
 
-  Widget getRow(Map item) {
-    return GestureDetector(
-      child: Container(
-//        padding: EdgeInsets.all(10),
-        height: 55,
-        color: AppColor.white,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Divider(
-              height: 0.0,
-              indent: 0.0,
-              color: AppColor.white, //line
-            ),
-            Container(
-              padding: EdgeInsets.only(left: 10),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    item['name'],
-                    style: TextStyle(
-                      color: AppColor.color333,
-                      fontSize: 18.0,
-                      fontFamily: "Courier",
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Divider(
-              height: 1.0,
-              indent: 0.0,
-              color: AppColor.line, //line
-            ),
-          ],
-        ),
-      ),
-      onTap: () {
-        setState(() {
-          // cellList = List.from(cellList);
-          // cellList.add(getRow(cellList.length + 1));
-          // print('Row $i');
-        });
-      },
-    );
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -158,7 +129,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
 //          ],
 //        ),
     );
+
   }
+
+  Widget getRow(Map item) {
+    return GestureDetector(
+      child: Container(
+//        padding: EdgeInsets.all(10),
+        height: 55,
+        color: AppColor.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Divider(
+              height: 0.0,
+              indent: 0.0,
+              color: AppColor.white, //line
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 10),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    item['name'],
+                    style: TextStyle(
+                      color: AppColor.color333,
+                      fontSize: 18.0,
+                      fontFamily: "Courier",
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(
+              height: 1.0,
+              indent: 0.0,
+              color: AppColor.line, //line
+            ),
+          ],
+        ),
+      ),
+      onTap: () {
+        setState(() {
+          // cellList = List.from(cellList);
+          // cellList.add(getRow(cellList.length + 1));
+          // print('Row $i');
+        });
+      },
+    );
+  }
+
 
   // _getListData() {
   //   List<Widget> widgets = [];
