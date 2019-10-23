@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_book/App/app_color.dart';
 
 import '../public.dart';
 
@@ -15,19 +13,35 @@ class NovelCoverImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Colors.red,
+      width: width,
+//      color: Colors.lightGreenAccent,
+//      child: buildExtendedImgView(),
+      child: buildDefaultImgView(),
+      decoration: BoxDecoration(border: Border.all(color: AppColor.paper)),
+    );
+  }
+
+  Widget buildExtendedImgView() {
+    return Container(
       child: ExtendedImage.network(
         imgUrl,
         fit: BoxFit.cover,
         width: width,
         height: height,
         cache: true,
-        // border: Border.all(color: Colors.red, width: 1.0),
-        // shape: boxShape,
-        // borderRadius: BorderRadius.all(Radius.circular(30.0)),
-        // color: AppColor.primary,
+        border: Border.all(color: AppColor.paper, width: 1.0),
       ),
-      // decoration: BoxDecoration(border: Border.all(color: AppColor.paper)),
+    );
+  }
+
+  Widget buildDefaultImgView() {
+    return Container(
+      child: Image(
+        image: NetworkImage(imgUrl),
+        fit: BoxFit.cover,
+        width: width,
+        height: height,
+      ),
     );
   }
 }

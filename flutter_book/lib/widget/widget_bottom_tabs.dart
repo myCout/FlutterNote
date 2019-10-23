@@ -4,8 +4,7 @@ import 'package:flutter_book/App/app_color.dart';
 import 'package:flutter_book/Page/page_bookcity.dart';
 import 'package:flutter_book/Page/page_bookshelf.dart';
 import 'package:flutter_book/Page/page_profile.dart';
-
-import '../public.dart';
+import 'package:flutter_book/public.dart';
 
 class BottomNavigationWidget extends StatefulWidget {
   @override
@@ -26,14 +25,14 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   ];
 
   List<Image> _tabImages = [
-    Image.asset(Assets.assetsImgsTabBookshelfN),
-    Image.asset(Assets.assetsImgsTabBookstoreN),
-    Image.asset(Assets.assetsImgsTabMeN),
+    Image.asset(R.assetsImgsTabBookshelfN),
+    Image.asset(R.assetsImgsTabBookstoreN),
+    Image.asset(R.assetsImgsTabMeN),
   ];
   List<Image> _tabSelectedImages = [
-    Image.asset(Assets.assetsImgsTabBookshelfP),
-    Image.asset(Assets.assetsImgsTabBookstoreP),
-    Image.asset(Assets.assetsImgsTabMeP),
+    Image.asset(R.assetsImgsTabBookshelfP),
+    Image.asset(R.assetsImgsTabBookstoreP),
+    Image.asset(R.assetsImgsTabMeP),
   ];
 
   @override
@@ -43,7 +42,8 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.instance = ScreenUtil(width: 375, height: 667)..init(context);
+    setDesignWHD(375, 667);
+    // ScreenUtil.instance = ScreenUtil(width: 375, height: 667)..init(context);
     return Scaffold(
       body: IndexedStack(
         index: currentIndex,

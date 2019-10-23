@@ -17,8 +17,8 @@ class NovelCovelImageWidget extends StatelessWidget {
       child: ExtendedImage.network(
         imgUrl,
         fit: BoxFit.fill,
-        width: ScreenUtil().setWidth(width),
-        height: ScreenUtil().setHeight(height),
+        width: ScreenUtil.getScaleW(context, width),
+        height: ScreenUtil.getScaleH(context, height),
         cache: true,
         border: Border.all(color: Colors.red, width: 1.0),
         // shape: boxShape,

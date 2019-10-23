@@ -17,7 +17,7 @@ class SectionView extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
             child: Row(
               children: <Widget>[
-                Image.asset(Assets.assetsImgsHomeTip),
+                Image.asset(R.assetsImgsHomeTip),
                 SizedBox(width: 10),
                 Text('$title',
                     style:

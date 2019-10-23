@@ -20,7 +20,7 @@ class _BookShelfPageState extends State<BookShelfPage> {
           // Text("dataddddddddd"),
           UpdatedItem(
             model: UpdateItemModel(
-                appIcon: Assets.assetsImgsIcon,
+                appIcon: R.assetsImgsIcon,
                 appDescription:
                     "Thanks for using Google Maps! This release brings bug fixes that improve our product to help you discover new places and navigate to them.",
                 appName: "Google Maps - Transit & Fond",

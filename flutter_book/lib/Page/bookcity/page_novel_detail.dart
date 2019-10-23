@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_book/App/app_color.dart';
 import 'package:flutter_book/Model/Book.dart';
-import 'package:flutter_book/widget/widget_cover_view.dart';
 import 'package:flutter_book/widget/widget_detail_toolbar.dart';
 
 import '../../public.dart';
@@ -28,13 +27,12 @@ class _NovelDetailPageState extends State<NovelDetailPage> with RouteAware {
       ),
       body: Container(
         color: AppColor.white,
-        // child: _columnMoreExpanded(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
               margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-              height: ScreenUtil().setHeight(110),
+              height: ScreenUtil.getScaleH(context, 140),
               child: Row(
                 children: <Widget>[
                   NovelCoverImage(

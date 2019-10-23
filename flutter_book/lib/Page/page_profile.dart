@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_book/App/app_color.dart';
-import 'package:flutter_book/imgPath.dart';
 import 'package:flutter_book/public.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -9,42 +8,47 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  ScrollController _controller;//ListView控制器
-  bool isToTop = false;//标示目前是否需要启用 "Top" 按钮
+  ScrollController _controller; //ListView控制器
+  bool isToTop = false; //标示目前是否需要启用 "Top" 按钮
   List<Widget> cellList = [];
   List dataSource = [
     {'icon': 'icon0', 'name': '清理缓存'},
     {'icon': 'icon1', 'name': '分享应用'},
     {'icon': 'icon2', 'name': '关于我们'},
     {'icon': 'icon3', 'name': '用户协议'},
-    {'icon': 'icon4', 'name': '隐私保护政策'},
-    {'icon': 'icon0', 'name': '清理缓存'},
-    {'icon': 'icon1', 'name': '分享应用'},
-    {'icon': 'icon2', 'name': '关于我们'},
-    {'icon': 'icon3', 'name': '用户协议'},
-    {'icon': 'icon4', 'name': '隐私保护政策'},
-    {'icon': 'icon0', 'name': '清理缓存'},
-    {'icon': 'icon1', 'name': '分享应用'},
-    {'icon': 'icon2', 'name': '关于我们'},
-    {'icon': 'icon3', 'name': '用户协议'},
-    {'icon': 'icon4', 'name': '隐私保护政策'}
+    // {'icon': 'icon4', 'name': '隐私保护政策'},
+    // {'icon': 'icon0', 'name': '清理缓存'},
+    // {'icon': 'icon1', 'name': '分享应用'},
+    // {'icon': 'icon2', 'name': '关于我们'},
+    // {'icon': 'icon3', 'name': '用户协议'},
+    // {'icon': 'icon4', 'name': '隐私保护政策'},
+    // {'icon': 'icon0', 'name': '清理缓存'},
+    // {'icon': 'icon1', 'name': '分享应用'},
+    // {'icon': 'icon2', 'name': '关于我们'},
+    // {'icon': 'icon3', 'name': '用户协议'},
+    // {'icon': 'icon4', 'name': '隐私保护政策'}
   ];
 
   @override
   void initState() {
     super.initState();
     _controller = ScrollController();
-    _controller.addListener((){
-      if(_controller.offset > 1000){//如果ListView已经向下滚动了1000，则启动Top按钮
+    _controller.addListener(() {
+      if (_controller.offset > 1000) {
+        //如果ListView已经向下滚动了1000，则启动Top按钮
         setState(() {
           isToTop = true;
         });
-      }else if(_controller.offset < 300) {
+      } else if (_controller.offset < 300) {
         setState(() {
           isToTop = false;
         });
       }
     });
+
+    for (var item in dataSource) {
+      cellList..add(getRow(item));
+    }
   }
 
   @override
@@ -53,83 +57,67 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.dispose();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            title: Text('标题'),
-            backgroundColor: Theme.of(context).accentColor,
-//              floating: true,
-            pinned: true,
-//              snap: true,
-            flexibleSpace:
-                Image.asset(Assets.assetsImgsImgMeizi, fit: BoxFit.cover),
-            expandedHeight: 200, //头部控件高度
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return getRow(dataSource[index]);
-              },
-              childCount: dataSource.length,
-            ),
-          )
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('个人中心'),
       ),
-//        child: Column(
-//          children: <Widget>[
-//
-//            Container(
-//              height: 170,
-//              color: AppColor.white,
-//              padding: EdgeInsets.only(left: 10, right: 15),
-//              child: GestureDetector(
-//                onTap: (){
-//                  AppNavigator.pushLogin(context);
-//                },
-//                child: Row(
-//                  children: <Widget>[
-//                    CircleAvatar(
-//                      radius: 36.0,
-//                      backgroundImage: AssetImage(
-//                        Assets.assetsImgsIconAvatar,
-//                      ),
-//                    ),
-//                    Container(
-//                      padding: EdgeInsets.only(left: 15),
-//                      child: Text(
-//                        '点击登录',
-//                        style: TextStyle(
-//                          color: AppColor.color333,
-//                          fontSize: 18.0,
-//                          fontFamily: "Courier",
-//                        ),
-//                      ),
-//                    )
-//                  ],
-//                ),
-//              ),
-//            ),
-//            Divider(
-//              height: 10.0,
-//              indent: 0.0,
-//              color: AppColor.line, //line
-//            ),
-//            Container(
-//              child: ListView(
-//                physics: NeverScrollableScrollPhysics(),
-//                shrinkWrap: true,
-//                children: this.cellList,
-//              ),
-//            )
-//          ],
-//        ),
+      body: getTableView(),
     );
+    // return Container(
+    //   child: getTableView(),
+    // );
+  }
 
+  Widget getTableView() {
+    return Column(
+      children: <Widget>[
+        Container(
+          height: 150,
+          color: AppColor.white,
+          padding: EdgeInsets.only(left: 10, right: 15),
+          child: GestureDetector(
+            onTap: () {
+              AppNavigator.pushLogin(context);
+            },
+            child: Row(
+              children: <Widget>[
+                CircleAvatar(
+                  radius: 36.0,
+                  backgroundImage: AssetImage(
+                    R.assetsImgsIconAvatar,
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 15),
+                  child: Text(
+                    '点击登录',
+                    style: TextStyle(
+                      color: AppColor.color333,
+                      fontSize: 18.0,
+                      fontFamily: "Courier",
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+        Divider(
+          height: 10.0,
+          indent: 0.0,
+          color: AppColor.line, //line
+        ),
+        Container(
+          child: ListView(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            children: this.cellList,
+          ),
+        )
+      ],
+    );
   }
 
   Widget getRow(Map item) {
@@ -180,6 +168,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
+  Widget getCustomScrollView() {
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverAppBar(
+          title: Text('个人中心'),
+          backgroundColor: Theme
+              .of(context)
+              .accentColor,
+//              floating: true,
+          pinned: true,
+//              snap: true,
+          flexibleSpace:
+          Image.asset(R.assetsImgsImgMeizi, fit: BoxFit.cover),
+          expandedHeight: 200, //头部控件高度
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+                (context, index) {
+              return getRow(dataSource[index]);
+            },
+            childCount: dataSource.length,
+          ),
+        )
+      ],
+    );
+  }
 
   // _getListData() {
   //   List<Widget> widgets = [];

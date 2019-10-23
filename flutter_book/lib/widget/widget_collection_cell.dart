@@ -28,7 +28,8 @@ class BookCollectionCell extends StatelessWidget {
             Text(
               model.name,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: ScreenUtil.getScaleW(context, 12),
+                  fontWeight: FontWeight.bold),
               maxLines: 1,
             ),
             // SizedBox(

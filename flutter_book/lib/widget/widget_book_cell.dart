@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_book/Model/Book.dart';
-import 'package:flutter_book/widget/widget_cover_view.dart';
-
 import '../public.dart';
 
 class BookCell extends StatelessWidget {
@@ -19,22 +17,11 @@ class BookCell extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
       child: Row(
         // textDirection: TextDirection.ltr,
-        // mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          // CoverView(model: bookModel, width: width, height: height),
-          // ExtendedImage.network(
-          //   bookModel.cover,
-          //   // color: AppColor.primary,
-          //   fit: BoxFit.cover,
-          //   width: imgWidth + 1,
-          //   height: imgHeight,
-          //   cache: true,
-          //   // border: Border.all(color: Colors.red, width: 10.0),
-          //   // shape: boxShape,
-          //   // borderRadius: BorderRadius.all(Radius.circular(30.0)),
-          // ),
           NovelCoverImage(
               imgUrl: bookModel.cover, width: imgWidth, height: imgHeight),
+
           BookDetail(context, bookModel)
         ],
       ),
@@ -45,10 +32,11 @@ class BookCell extends StatelessWidget {
 Widget BookDetail(BuildContext context, Book bookModel) {
   return Expanded(
     child: Container(
+      color: AppColor.white,
       // padding: EdgeInsets.all(0),
       margin: EdgeInsets.fromLTRB(10, 0, 0, 5),
       child: Column(
-        mainAxisSize: MainAxisSize.max,
+//        mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Row(

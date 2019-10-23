@@ -26,7 +26,8 @@ class HttpManager {
       {noTip = false,
       dynamic params,
       Map<String, String> header,
-      method = 'get'}) async {
+        method = 'get',
+        checkToken = false}) async {
     ///构造Headers
     Map<String, String> headers = HashMap();
     if (header != null) {
@@ -38,6 +39,30 @@ class HttpManager {
     option.connectTimeout = 15000;
     option.responseType = ResponseType.json;
     Response response;
+
+    // 增加拦截器
+    dio.interceptors
+        .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
+      // 为每个请求头都增加 user-agent
+      options.headers["user-agent"] = "Custom-UA";
+      options.headers["Content-Type"] = "application/json";
+      // 检查是否有 token，没有则直接报错
+      if (checkToken) {
+        if (options.headers['token'] == null) {
+          return HttpResponse(
+              Code.errorHandleFunction(Code.NETWORK_ERROR, "token失效", noTip),
+              false,
+              Code.NETWORK_ERROR);
+        }
+      }
+
+      // 检查缓存是否有数据
+      // if (options.uri == Uri.parse('http://xxx.com/file1')) {
+      //   return dio.resolve(" 返回缓存数据 ");
+      // }
+      // 放行请求
+      return options;
+    }));
 
 //    await CacheManager.init();
     //取缓存
@@ -118,9 +143,9 @@ class HttpManager {
     try {
       if (response.statusCode == 200 || response.statusCode == 201) {
 //         print('success :' + response.data['success']);
-//        if (response.data['data']['success']) {
-//          print('success :' + response.data.data.toString());
-//        }
+        // if (response.data['data']['success']) {
+        //   print('success :' + response.data.data.toString());
+        // }
 //        print('httpManager=====>返回数据: ' + response.data.toString());
         return HttpResponse(response.data, true, Code.SUCCESS,
             headers: response.headers);

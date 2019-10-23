@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_book/App/app_screen.dart';
 import 'package:flutter_book/Model/BannerModel.dart';
 import 'package:flutter_book/public.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 //import 'package:flutter_swiper/flutter_swiper.dart';
 
 class BannerWidget extends StatelessWidget {

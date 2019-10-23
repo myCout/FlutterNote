@@ -22,28 +22,27 @@ dependencies:
   cupertino_icons: ^0.1.2
   # 新添加的依赖
   english_words: ^3.1.3
-  flutter_screenutil: ^0.6.0
+  # flutter_screenutil: ^0.6.0
   flutter_easyrefresh: ^1.2.7
   flutter_swiper: ^1.1.6
   # carousel_slider: ^1.3.0
   # cached_network_image: ^0.8.0
   dio: ^2.0.2
   json_serializable: ^2.0.0
-  shared_preferences: ^0.5.1+1
   flutter_spinkit: ^3.1.0
-  fluttertoast: ^3.0.1
-  flutter_webview_plugin: ^0.3.0+2
+  fluttertoast: ^3.1.3
+  #  flutter_webview_plugin: ^0.3.0+2
   flutter_html: ^0.9.4
   url_launcher: ^5.0.2
   objectdb: ^1.0.5
   flutter_redux: ^0.5.2
   connectivity: ^0.3.2
   package_info: ^0.4.0+1
-  # extended_image_library: ^0.1.5
   extended_image: ^0.6.3
-  # extended_image_library: ^0.1.7
-  # path_provider: ^1.1.3
-  # flutter_cache_manager: ^0.3.2
+  shared_preferences: ^0.5.3+5
+  flustars: ^0.2.6+1
+  event_bus: 1.1.0
+  provider: ^3.1.0+1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -54,12 +53,9 @@ flutter:
     # assets-generator-begin
     # assets/imgs/*
     - assets/imgs/
-    - assets/imgs/2.0x/
-    - assets/imgs/3.0x/
-    - assets/imgs/icon_user_avatar.png
-    - assets/imgs/img_meizi.jpg
     - assets/imgs/actionbar_checkin.png
     - assets/imgs/actionbar_search.png
+    - assets/imgs/aliuser_title_back_normal.png
     - assets/imgs/arrow_right.png
     - assets/imgs/bookshelf_add.png
     - assets/imgs/bookshelf_bg.png
@@ -79,8 +75,13 @@ flutter:
     - assets/imgs/home_search.png
     - assets/imgs/home_tip.png
     - assets/imgs/icon.png
+    - assets/imgs/icon_avatar.png
+    - assets/imgs/icon_inputPhoneNum.png
+    - assets/imgs/icon_inputPwd.png
     - assets/imgs/icon_menu_catalog.png
     - assets/imgs/icon_menu_share.png
+    - assets/imgs/icon_user_avatar.png
+    - assets/imgs/img_meizi.jpg
     - assets/imgs/me_action.png
     - assets/imgs/me_buy.png
     - assets/imgs/me_comment.png

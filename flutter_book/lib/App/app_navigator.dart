@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_book/AATest/Test_CunstomPage.dart';
 import 'package:flutter_book/Model/Book.dart';
 import 'package:flutter_book/Page/bookcity/page_novel_detail.dart';
 import 'package:flutter_book/Page/page_login.dart';
@@ -20,5 +21,10 @@ class AppNavigator {
    static pushLogin(BuildContext context) {
      AppNavigator.push(context,LoginPage());
    }
+
+  static pushTestPage(BuildContext context) {
+    AppNavigator.push(context,TestPage());
+  }
+
 
 }

@@ -1,4 +1,12 @@
+import 'package:flutter_book/public.dart';
+
+enum Env {
+  DEBUG,
+  RELEASE
+}
+
 class AppConfig {
+
   static const PAGE_SIZE = 20;
   static const DEBUG = true;
   static const TOKEN_KEY = "token";
@@ -12,4 +20,21 @@ class AppConfig {
   static const CLIENT_SECRET = '6f12853d2f72abbd13548239cf8040783e6e47df';
   static const NOTE = 'com.lijinshanmx.gank';
   static const NOTE_URL = 'https://github.com/lijinshanmx/gank/CallBack';
+
+  static Env env;
+
+  static String get apiHost {
+    switch (env) {
+      case Env.DEBUG:
+        return "http://novel-api.test.harmight.com:8081";
+        break;
+      case Env.RELEASE:
+        return "http://novel-api.test.harmight.com:8081";
+//        return "http://39.96.26.224:8081";
+        break;
+      default:
+        return "http://local.yuanxuxu.com";
+    }
+  } 
+
 }
