@@ -1,5 +1,9 @@
 ///此类定义了app中所有的字符串常量.
 class AppStrings {
+  static const STRING_TOKEN = "user_token";
+  static const STRING_USER_ID = "user_id";
+
+
   static const STRING_DB_FAVORITE = "favorites.db";
   static const STRING_DB_CACHE = "abook.db";
 

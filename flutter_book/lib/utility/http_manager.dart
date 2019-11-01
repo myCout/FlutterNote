@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'dart:collection';
 import 'package:connectivity/connectivity.dart';
+import 'package:flutter_book/App/user_manager.dart';
 //import 'app_cache_manager.dart';
 import 'http_code.dart';
 import 'http_response.dart';
@@ -42,13 +43,15 @@ class HttpManager {
 
     // 增加拦截器
     dio.interceptors
-        .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
+        .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
       // 为每个请求头都增加 user-agent
       options.headers["user-agent"] = "Custom-UA";
       options.headers["Content-Type"] = "application/json";
       // 检查是否有 token，没有则直接报错
       if (checkToken) {
-        if (options.headers['token'] == null) {
+        String token = await UserManager().getUserToken();
+        options.headers["Authorization-Token"] = token;
+        if (options.headers['Authorization-Token'] == null) {
           return HttpResponse(
               Code.errorHandleFunction(Code.NETWORK_ERROR, "token失效", noTip),
               false,

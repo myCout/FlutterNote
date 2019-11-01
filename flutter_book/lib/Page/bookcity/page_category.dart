@@ -9,7 +9,6 @@ import 'package:flutter_book/AATest/Test_CustomNotification.dart';
 
 import '../../public.dart';
 
-
 EventBus eventBus = EventBus();
 
 class CategoryPage extends StatefulWidget {
@@ -42,7 +41,7 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider.value(
-      value: CounterModel(),//需要共享的数据资源
+      value: CounterModel(), //需要共享的数据资源
       child: buildBody(),
     );
   }
@@ -56,11 +55,44 @@ class _CategoryPageState extends State<CategoryPage> {
       child: Column(
         children: <Widget>[
           Text('1 Counter: ${_counter.counter}'),
-          FloatingActionButton(
-            onPressed: () => AppNavigator.pushTestPage(context),
+          SizedBox(
+            height: 40,
+          ),
+          SpinKitRotatingCircle(
+            color: Colors.redAccent,
+            size: 50.0,
+          ),
+          SizedBox(
+            height: 40,
+          ),
 
+          FloatingActionButton(
+            onPressed: () {
+//              AppNavigator.pushTestPage(context)
+
+              Navigator.of(context)
+                  .pushNamed('second_page', arguments: "hello")
+                  .then((msg) {
+                setState(() {
+                  print('CallBackValue = $msg');
+                });
+              });
+            },
             child: Icon(Icons.pages),
           ),
+          SizedBox(
+            height: 20,
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed('animation_page');
+            },
+            child: Text('动画'),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          FlatButton(onPressed: () {}, child: Text('扁平化按钮，背景默认透明，点击后会有灰色背景'))
         ],
       ),
     );
@@ -94,10 +126,7 @@ class _CategoryPageState extends State<CategoryPage> {
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(_msg),
-          CustomChild()
-        ],
+        children: <Widget>[Text(_msg), CustomChild()],
       ),
     );
   }
@@ -115,10 +144,11 @@ class Counter extends StatelessWidget {
     //获取InheritedWidget节点
     CountContainer state = CountContainer.of(context);
     return Scaffold(
-      appBar: AppBar(title: Text('InheritedWidget Demo'),),
+      appBar: AppBar(
+        title: Text('InheritedWidget Demo'),
+      ),
       body: Text('You have pushed the button this many times: ${state.count}'),
     );
     return null;
   }
-
 }

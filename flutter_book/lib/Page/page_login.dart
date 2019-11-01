@@ -1,8 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter_book/public.dart';
+import 'package:flutter_book/public.dart' as prefix0;
 import 'package:flutter_book/utility/styles.dart';
 import 'package:flutter_book/widget/widget_code_btn.dart';
+
+import '../entity_factory.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -228,19 +231,31 @@ class _LoginPageState extends State<LoginPage> {
 
   loginBtnClick() async {
     try {
-      Map<String, dynamic> jsonString =
-      await AppAPI.postQuickLogin(usernameController.text, pswController.text);
+      Map<String, dynamic> jsonString = await AppAPI.postQuickLogin(
+          usernameController.text, pswController.text);
       bool status = jsonString["success"];
 
       if (status) {
-        print('object:' + jsonString["errmsg"]);
+//        UserModelEntity userModel = EntityFactory.generateOBJ(jsonString["data"]);
+        UserModelEntity userModel =
+        UserModelEntity.fromJson(jsonString["data"]);
+//        debugPrint("username = ${userModel.nickname}");
+        DataManager().insertUser(userModel);
+        UserManager().saveUserId(userModel.id);
+        UserManager().saveUserToken(userModel.token);
+
+        Navigator.pop(context, true);
       } else {
         String msg = jsonString["errmsg"];
-        print('object:' + jsonString["errmsg"]);
+//        print('object:' + jsonString["errmsg"]);
         Utils.showToast(msg);
       }
     } catch (e) {}
 
     setState(() {});
+  }
+
+  saveUserData(UserModelEntity model) {
+    DataManager().insertUser(model);
   }
 }

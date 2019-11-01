@@ -13,6 +13,7 @@ class AppAPI {
   static String API_LOGIN = "$API_ABOOK_HOST/login";
   static String API_QUICK_LOGIN = "$API_ABOOK_HOST/quickLogin";
   static String API_CAPTCHA = "$API_ABOOK_HOST/captcha";
+  static String API_PROFILE_EDIT = "$API_ABOOK_HOST/user/profile/edit";
 
   //游客登录
   // static postLoginTmp() async {
@@ -68,10 +69,10 @@ class AppAPI {
   }
 
   static postQuickLogin(String phone, String captcha) async {
-    FormData formData = FormData.from({"phone": phone, "captcha": captcha});
+    Map params = {"phone": phone, "captcha": captcha};
 //   String url = API_DATA + category + "/$count/$page";
-    HttpResponse response =
-        await HttpManager.fetch(API_LOGIN, params: formData, method: 'post');
+    HttpResponse response = await HttpManager.fetch(API_QUICK_LOGIN,
+        params: params, method: 'post');
     return response.data;
   }
 
@@ -80,6 +81,13 @@ class AppAPI {
     HttpResponse response = await HttpManager.fetch(url);
     return response.data;
   }
+
+  static postUserProfile(Map params) async {
+    HttpResponse response = await HttpManager.fetch(API_PROFILE_EDIT,
+        params: params, method: 'post', checkToken: true);
+    return response.data;
+  }
+
 
 // ///获取最新一天的数据
 // static getTodayData() async {

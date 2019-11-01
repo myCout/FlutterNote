@@ -6,10 +6,10 @@ class BookCityPage extends StatefulWidget {
   _BookCityPageState createState() => _BookCityPageState();
 }
 
-class _BookCityPageState extends State<BookCityPage> {
+class _BookCityPageState extends State<BookCityPage>
+    with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return TopTabController();
   }
 }
-

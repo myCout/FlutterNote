@@ -3,6 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_book/App/app_color.dart';
 import 'package:flutter_book/config/config.dart';
 import 'AATest/Test_CounterModel.dart';
+import 'Page/page_edit_profile.dart';
+import 'Page/page_login.dart';
 import 'public.dart';
 import 'widget/widget_bottom_tabs.dart';
 import 'package:flutter/cupertino.dart';
@@ -41,7 +43,11 @@ final ThemeData kAndroidTheme = ThemeData(
 bool get isIOS => foundation.defaultTargetPlatform == TargetPlatform.iOS;
 
 void main() {
-  debugPaintBaselinesEnabled = false;
+//  debugPaintBaselinesEnabled = true;
+//  debugPaintSizeEnabled = true;
+
+  // 将debugPrint指定为空的执行体, 所以它什么也不做
+  debugPrint = (String message, {int wrapWidth}) {}; //空实现
   AppConfig.env = Env.RELEASE;
   runApp(MyApp());
 }
@@ -54,12 +60,25 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider.value(
       value: CounterModel(),//需要共享的数据资源
       child: MaterialApp(
+        routes: {
+          "second_page": (context) => TestPage(),
+          "animation_page": (context) => AnimationPage(),
+          "login_page": (context) => LoginPage(),
+          "edit_profile": (context) => EditProfile(),
+        },
+        onUnknownRoute: (RouteSettings setting) =>
+            MaterialPageRoute(builder: (context) => UnknownPage()),
         theme: isIOS ? kIOSTheme : kAndroidTheme,
         home: BottomNavigationWidget(),
       ),
     );
   }
 }
+
+//使用名字打开页面
+// Navigator.pushNamed(context,"second_page");
+//使用错误名字打开页面
+// Navigator.pushNamed(context,"unknown_page");
 
 //class MyHomePage extends StatefulWidget {
 //  MyHomePage({Key key, this.title}) : super(key: key);
