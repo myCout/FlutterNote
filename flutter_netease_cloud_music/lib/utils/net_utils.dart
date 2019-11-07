@@ -16,7 +16,7 @@ class NetUtils {
     CookieJar cj = PersistCookieJar(dir: tempPath);
     _dio = Dio(BaseOptions(baseUrl: 'http://127.0.0.1:3000'))
       ..interceptors.add(CookieManager(cj))
-      ..interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
+      ..interceptors.add(LogInterceptor(request:false, requestBody:false, requestHeader:false,responseHeader:false, responseBody: true));
   }
 
   static Future<Response> _get(
