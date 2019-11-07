@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_minizb/untils/net_utils.dart';
+import 'model/user.dart';
 import 'untils/app_api.dart';
 import 'untils/app_manager.dart';
 import 'pages/app_index.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  NetUtils.init();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -14,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: PageIndex(),
+      home: MyHomePage(),
     );
   }
 }
@@ -30,16 +35,24 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   
-  void _incrementCounter() {
+  Future _incrementCounter() async {
+
+    User user = await NetUtils.login(context, '17709218294', 'hy198611');
+    if (user.code > 299) {
+      print('失败');
+      return;
+    }
+    print('登录成功');
+
     setState(() {
-      // _counter++;
-      AppManager.initApp(context).then((_) {
-      // Future.delayed(const Duration(seconds: 2), () {
-      //   Navigator.pushReplacementNamed(context, HomePage.ROUTER_NAME);
-      // });
-        loginTemp();
-      });
-      
+//      // _counter++;
+//      AppManager.initApp(context).then((_) {
+//      // Future.delayed(const Duration(seconds: 2), () {
+//      //   Navigator.pushReplacementNamed(context, HomePage.ROUTER_NAME);
+//      // });
+//        loginTemp();
+//      });
+
     });
   }
 
@@ -49,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text('首页'),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it

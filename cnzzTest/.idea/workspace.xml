@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="90742b9f-7bb1-4ddc-8405-3a026a89bae2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Vue_CNZZDemo/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Vue_CNZZDemo/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Vue_CNZZDemo/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Vue_CNZZDemo/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Vue_CNZZDemo/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/bet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/bfc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/bg_daily.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/bgm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/ck.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_broadcast.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_collect.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_comment.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_daily.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_dislike.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_download.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_download_black.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_late_play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_liked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_line_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_look.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_multi_select.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_music.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_parise.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_play_songs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_playlist.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_radio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_rank.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_share.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_song_comment.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_song_download.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_song_left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_song_more.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_song_pause.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_song_play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_song_play_type_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_song_right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_song_single_circle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_songs_circle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_songs_random.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_triangle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/icon_up.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/images/welcome.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/ios/Podfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/ios/Podfile.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/App/app_color.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/Application.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/model/lyric.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/model/user.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/pages/page_login.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/pages/page_splash.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/provider/play_songs_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/provider/user_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/route/navigate_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/route/route_handles.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/route/routes.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/utils/navigator_util.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/utils/net_utils.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/utils/utils.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/widgets/app_common_text.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/widgets/widget_future_builder.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/widgets/widget_hempty_view.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/widgets/widget_loading.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/widgets/widget_net_error.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flutter_netease_cloud_music/lib/widgets/widget_vempty_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Flutter-Notebook" beforeDir="false" afterPath="$PROJECT_DIR$/../Flutter-Notebook" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flutter-todos" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter-todos" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flutter_book/lib/utility/app_database_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter_book/lib/utility/app_database_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flutter_shuqi" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter_shuqi" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1T96nccy6U5SKKPgeFu7g57MPf4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="90742b9f-7bb1-4ddc-8405-3a026a89bae2" name="Default Changelist" comment="" />
+      <created>1572860131733</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572860131733</updated>
+      <workItem from="1572860133840" duration="5258000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

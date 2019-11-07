@@ -15,7 +15,7 @@ class DataManager {
   String sql_query_count = 'SELECT COUNT(*) FROM $TABLE_USER';
   String sql_query = 'SELECT * FROM $TABLE_USER';
 
-  var _result;
+//  var _result;
 
   static final DataManager _instance = DataManager.internal();
 
