@@ -2,7 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_netease_cloud_music/model/recommend.dart';
 import 'package:flutter_netease_cloud_music/model/user.dart';
+import 'package:flutter_netease_cloud_music/model/banner.dart' as mBanner;
+import 'package:flutter_netease_cloud_music/model/banner_model_entity.dart';
 import 'package:flutter_netease_cloud_music/utils/utils.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_netease_cloud_music/widgets/widget_loading.dart';
@@ -16,8 +19,9 @@ class NetUtils {
     CookieJar cj = PersistCookieJar(dir: tempPath);
     _dio = Dio(BaseOptions(baseUrl: 'http://127.0.0.1:3000'))
       ..interceptors.add(CookieManager(cj))
-      ..interceptors.add(LogInterceptor(request:false, requestBody:false, requestHeader:false,responseHeader:false, responseBody: true));
+      ..interceptors.add(LogInterceptor(request:true, requestBody:false, requestHeader:false,responseHeader:false, responseBody: true));
   }
+
 
   static Future<Response> _get(
       BuildContext context,
@@ -53,4 +57,21 @@ class NetUtils {
       Utils.showToast('网络错误！');
     });
   }
+  //首页Banner
+//  static Future<mBanner.Banner> getBannerData(BuildContext context) async {
+//    var response = await _get(context, '/banner', params: {'type': 1});
+//    print("response = " + response.toString());
+//    return mBanner.Banner.fromJson(response.data);
+//  }
+  static Future<BannersList> getBannerData(BuildContext context) async {
+    var response = await _get(context, '/banner', params: {'type': 1});
+    return BannersList.fromJson(response.data);
+  }
+
+  static Future<RecommendData> getRecommendData(BuildContext context) async {
+    var response = await _get(context,'/recommend/resource');
+    return RecommendData.fromJson(response.data);
+  }
+
+
 }

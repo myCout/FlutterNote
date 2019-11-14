@@ -8,6 +8,9 @@ class HEmptyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      child: Container(
+//        color: Colors.blue,
+      ),
       width: width,
     );
   }
