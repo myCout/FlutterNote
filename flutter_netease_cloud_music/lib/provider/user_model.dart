@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_netease_cloud_music/model/user.dart';
+import 'package:flutter_netease_cloud_music/utils/app_navigator.dart';
 import 'package:flutter_netease_cloud_music/utils/navigator_util.dart';
 import 'package:flutter_netease_cloud_music/utils/net_utils.dart';
 import 'package:flutter_netease_cloud_music/utils/utils.dart';
@@ -33,7 +34,7 @@ class UserModel with ChangeNotifier {
     }
     Utils.showToast(user.msg ?? '登录成功');
     _saveUserInfo(user);
-//    NavigatorUtil.goHomePage(context);
+    AppNavigator.pushPageHome(context);
   }
 
   /// 保存用户信息到 sp

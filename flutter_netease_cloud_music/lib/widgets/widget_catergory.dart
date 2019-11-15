@@ -19,18 +19,19 @@ class HomeCategory extends StatelessWidget {
     };
 
     var keys = map.keys.toList();
-    var width = ScreenUtil().setWidth(100);
+    var containerHeight = ScreenUtil().setWidth(180);
+    var childWidth = ScreenUtil().setWidth(100);
     return Container(
       padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
       color: AppColor.white,
-      height: 100,
+      height: containerHeight,
       child: GridView.builder(
         physics: NeverScrollableScrollPhysics(), //屏蔽滚动
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: keys.length, //列数，每行几个
             mainAxisSpacing: 10, //主轴间距（这里是水平方向）
             crossAxisSpacing: 10, //交叉轴间距
-            childAspectRatio: 1 / 1.1 //长宽比
+            childAspectRatio: 1 / 1.2 //长宽比
             ),
         itemCount: keys.length,
         itemBuilder: (context, index) {
@@ -40,16 +41,17 @@ class HomeCategory extends StatelessWidget {
             },
             child: Container(
               color: AppColor.white,
+//              height: containerHeight,
               child: Column(
                 children: <Widget>[
                   Stack(
                     alignment: Alignment.center,
                     children: <Widget>[
                       Container(
-                        width: width,
-                        height: width,
+                        width: childWidth,
+                        height: childWidth,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(width / 2),
+                            borderRadius: BorderRadius.circular(childWidth / 2),
                             border:
                                 Border.all(color: Colors.black12, width: 0.5),
                             gradient: RadialGradient(
@@ -64,11 +66,11 @@ class HomeCategory extends StatelessWidget {
                       ),
                       Image.asset(
                         map[keys[index]],
-                        width: width,
-                        height: width,
+                        width: childWidth,
+                        height: childWidth,
                       ),
                       Container(
-                        padding: EdgeInsets.only(top: 5),
+                        padding: EdgeInsets.only(top: ScreenUtil().setWidth(5)),
                         child: keys[index] == '每日推荐'
                             ? Text(
                                 '${DateUtil.formatDate(DateTime.now(), format: 'dd')}',
@@ -76,14 +78,12 @@ class HomeCategory extends StatelessWidget {
                                     color: Colors.red,
                                     fontWeight: FontWeight.bold),
                               )
-                            : Text(
-                                '',
-                              ),
+                            : Text('',),
                       )
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 5),
+                    padding: EdgeInsets.only(top: ScreenUtil().setWidth(3)),
                     child: Text(
                       '${keys[index]}',
                       style: smallCommonTextStyle,

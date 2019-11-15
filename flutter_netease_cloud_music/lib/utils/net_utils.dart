@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_netease_cloud_music/model/album.dart';
+import 'package:flutter_netease_cloud_music/model/mv.dart';
 import 'package:flutter_netease_cloud_music/model/recommend.dart';
 import 'package:flutter_netease_cloud_music/model/user.dart';
 import 'package:flutter_netease_cloud_music/model/banner.dart' as mBanner;
@@ -12,20 +14,23 @@ import 'package:flutter_netease_cloud_music/widgets/widget_loading.dart';
 
 class NetUtils {
   static Dio _dio;
+
   static void init() async {
     // 获取沙盒路径，用于存储 cookie
     Directory tempDir = await getTemporaryDirectory();
     String tempPath = tempDir.path;
     CookieJar cj = PersistCookieJar(dir: tempPath);
-    _dio = Dio(BaseOptions(baseUrl: 'http://127.0.0.1:3000'))
+    _dio = Dio(BaseOptions(baseUrl: 'http://192.168.1.153:3000'))
       ..interceptors.add(CookieManager(cj))
-      ..interceptors.add(LogInterceptor(request:true, requestBody:false, requestHeader:false,responseHeader:false, responseBody: true));
+      ..interceptors.add(LogInterceptor(
+          request: true,
+          requestBody: false,
+          requestHeader: false,
+          responseHeader: false,
+          responseBody: true));
   }
 
-
-  static Future<Response> _get(
-      BuildContext context,
-      String url,
+  static Future<Response> _get(BuildContext context, String url,
       {Map<String, dynamic> params}) async {
     Loading.showLoading(context);
     try {
@@ -53,10 +58,11 @@ class NetUtils {
   }
 
   static Future<Response> refreshLogin(BuildContext context) async {
-    return await _get(context, '/login/refresh').catchError((e){
+    return await _get(context, '/login/refresh').catchError((e) {
       Utils.showToast('网络错误！');
     });
   }
+
   //首页Banner
 //  static Future<mBanner.Banner> getBannerData(BuildContext context) async {
 //    var response = await _get(context, '/banner', params: {'type': 1});
@@ -69,8 +75,24 @@ class NetUtils {
   }
 
   static Future<RecommendData> getRecommendData(BuildContext context) async {
-    var response = await _get(context,'/recommend/resource');
+    var response = await _get(context, '/recommend/resource');
     return RecommendData.fromJson(response.data);
+  }
+
+  static Future<AlbumData> getAlbumData(
+    BuildContext context, {
+    Map<String, dynamic> params = const {'offset': 1, 'limit': 10},
+  }) async {
+    var response = await _get(context, '/top/album', params: params);
+    return AlbumData.fromJson(response.data);
+  }
+
+  static Future<MVData> getMVData(
+    BuildContext context, {
+    Map<String, dynamic> params = const {'offset': 1, 'limit': 10},
+  }) async {
+    var response = await _get(context, '/top/mv', params: params);
+    return MVData.fromJson(response.data);
   }
 
 

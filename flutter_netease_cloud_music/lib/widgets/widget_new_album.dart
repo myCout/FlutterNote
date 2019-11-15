@@ -1,10 +1,8 @@
-import 'package:flutter_netease_cloud_music/App/app_color.dart';
-import 'package:flutter_netease_cloud_music/model/recommend.dart';
+import 'package:flutter_netease_cloud_music/model/album.dart';
 import 'package:flutter_netease_cloud_music/public.dart';
 import 'package:flutter_netease_cloud_music/widgets/widget_future_builder.dart';
-import 'package:flutter_netease_cloud_music/widgets/widget_play_list_cover.dart';
 
-class RecommendList extends StatelessWidget {
+class NewAlbum extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,28 +12,28 @@ class RecommendList extends StatelessWidget {
           Container(
             padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
             child: Text(
-              '推荐歌单',
+              '新碟上架',
               style: commonTextStyle,
             ),
           ),
-          _buildRecommendPlayList(),
+          _buildNewAlbumsList(),
         ],
       ),
     );
   }
 
-  Widget _buildRecommendPlayList() {
-    return CustomFutureBuilder<RecommendData>(
-      futureFunc: NetUtils.getRecommendData,
+  Widget _buildNewAlbumsList() {
+    return CustomFutureBuilder<AlbumData>(
+      futureFunc: NetUtils.getAlbumData,
       builder: (context, response) {
-        var data = response.recommend;
+        var data = response.albums;
         var width = ScreenUtil().setWidth(200);
         return Container(
 //          color: Colors.blue,
           height: ScreenUtil().setWidth(300),
           child: ListView.separated(
             padding:
-            EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(15)),
+                EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(15)),
             itemCount: data.length,
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
@@ -57,13 +55,24 @@ class RecommendList extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.only(top: 5),
                         width: width-5,
-                        child: Text(
-                          data[index].name,
-                          style: smallCommonTextStyle,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,//超出范围...
-                        ),
-                      )
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              data[index].name,
+                              style: smallCommonTextStyle,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis, //超出范围...
+                            ),
+                            Text(
+                              data[index].company,
+                              style: smallGrayTextStyle,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis, //超出范围...
+                            ),
+                          ],
+                        )
+                      ),
                     ],
                   ),
                 ),
