@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_netease_cloud_music/pages/page_daily_song.dart';
 import 'package:flutter_netease_cloud_music/pages/page_home.dart';
 import 'package:flutter_netease_cloud_music/pages/page_login.dart';
 import 'package:flutter_netease_cloud_music/pages/page_splash.dart';
@@ -13,14 +14,19 @@ var splashHandler = new Handler(
 // 登录页
 var loginHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
-      return LoginPage();
-    });
+  return LoginPage();
+});
 
 // 跳转到主页
 var homeHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
-      return HomePage();
-    });
+  return HomePage();
+});
+//每日推荐
+var dailySongHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
+  return DailySongPage();
+});
 
 //// 跳转到每日推荐歌曲
 //var dailySongsHandler = new Handler(

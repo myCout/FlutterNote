@@ -15,6 +15,7 @@ import 'package:flutter_netease_cloud_music/widgets/widget_new_album.dart';
 
 //import 'package:flutter_netease_cloud_music/widgets/widget_play_list_cover.dart';
 import 'package:flutter_netease_cloud_music/widgets/widget_recommend.dart';
+import 'package:flutter_netease_cloud_music/widgets/widget_top_mv.dart';
 
 class DiscoverPage extends StatefulWidget {
   @override
@@ -37,13 +38,12 @@ class _DiscoverPageState extends State<DiscoverPage>
                 _buildBanner(),
                 VEmptyView(20),
                 HomeCategory(callback: (index) {
-                  print(index);
+                  AppNavigator.pushPageDailySongs(context);
                 }),
                 RecommendList(),
 //          VEmptyView(20),
                 NewAlbum(),
-                _buildTopMv(),
-//          _buildRecommendPlayList(),
+                TopMv(),
               ],
             ),
           ),
@@ -55,44 +55,6 @@ class _DiscoverPageState extends State<DiscoverPage>
       futureFunc: NetUtils.getBannerData,
       builder: (context, data) {
         return CustomBanner(data.banners.map((e) => e.pic).toList());
-      },
-    );
-  }
-
-  Widget _buildTopMv() {
-    return CustomFutureBuilder<MVData>(
-      futureFunc: NetUtils.getMVData,
-      builder: (context, response) {
-        var data = response.data;
-        return ListView.separated(
-          padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(15)),
-          shrinkWrap: true,
-          itemCount: data.length,
-          physics: NeverScrollableScrollPhysics(),
-          separatorBuilder: (context, index) {
-            return VEmptyView(ScreenUtil().setWidth(50));
-          },
-          itemBuilder: (context, index) {
-            return Container(
-              color: AppColor.white,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  ClipRRect(
-                    borderRadius:
-                    BorderRadius.all(Radius.circular(8)),
-                    child: Utils.showNetImage(
-                      data[index].cover,
-                    ),
-                  ),
-                  VEmptyView(ScreenUtil().setWidth(20)),
-                  Text('${data[index].name}',maxLines: 1,overflow: TextOverflow.ellipsis,style: commonTextStyle,),
-                  Text('${data[index].artistName}',style: smallCommonTextStyle,),
-                ],
-              ),
-            );
-          },
-        );
       },
     );
   }

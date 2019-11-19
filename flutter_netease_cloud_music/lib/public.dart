@@ -21,4 +21,6 @@ export 'package:flutter_netease_cloud_music/App/app_screen.dart';
 
 //App相关
 export 'package:flutter_screenutil/flutter_screenutil.dart';
+export 'package:flutter_netease_cloud_music/utils/app_navigator.dart';
+
 

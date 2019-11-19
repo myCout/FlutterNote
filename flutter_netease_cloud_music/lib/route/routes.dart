@@ -6,6 +6,7 @@ class Routes {
   static String root = "/";
   static String login = "/login";
   static String home = "/home";
+  static String dailySongs = "/daily_songs";
 //  static String dailySongs = "/daily_songs";
 //  static String playList = "/play_list";
 //  static String topList = "/top_list";
@@ -21,6 +22,7 @@ class Routes {
     router.define(root, handler: splashHandler);
     router.define(login, handler: loginHandler);
     router.define(home, handler: homeHandler);
+    router.define(dailySongs, handler: dailySongHandler);
 //    router.define(dailySongs, handler: dailySongsHandler);
 //    router.define(playList, handler: playListHandler);
 //    router.define(topList, handler: topListHandler);

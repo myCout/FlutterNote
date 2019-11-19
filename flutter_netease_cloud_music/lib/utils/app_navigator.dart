@@ -37,6 +37,10 @@ class AppNavigator {
     AppNavigator.customNavigateTo(context, Routes.home, clearStack: true);
   }
 
+  static pushPageDailySongs(BuildContext context) {
+    AppNavigator.customNavigateTo(context, Routes.dailySongs, clearStack: true);
+  }
+
 //  static pushNovelDetail(BuildContext context, Book model) {
 //    AppNavigator.push(context, NovelDetailPage(bookModel: model));
 //  }

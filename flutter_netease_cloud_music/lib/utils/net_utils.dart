@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_netease_cloud_music/model/album.dart';
+import 'package:flutter_netease_cloud_music/model/daily_songs.dart';
 import 'package:flutter_netease_cloud_music/model/mv.dart';
 import 'package:flutter_netease_cloud_music/model/recommend.dart';
 import 'package:flutter_netease_cloud_music/model/user.dart';
@@ -94,6 +95,9 @@ class NetUtils {
     var response = await _get(context, '/top/mv', params: params);
     return MVData.fromJson(response.data);
   }
-
-
+  /// 每日推荐歌曲
+  static Future<DailySongsData> getDailySongsData(BuildContext context) async {
+    var response = await _get(context, '/recommend/songs');
+    return DailySongsData.fromJson(response.data);
+  }
 }
