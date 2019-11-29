@@ -6,6 +6,7 @@ import 'package:flutter_netease_cloud_music/model/album.dart';
 import 'package:flutter_netease_cloud_music/model/daily_songs.dart';
 import 'package:flutter_netease_cloud_music/model/mv.dart';
 import 'package:flutter_netease_cloud_music/model/recommend.dart';
+import 'package:flutter_netease_cloud_music/model/top_list_model.dart';
 import 'package:flutter_netease_cloud_music/model/user.dart';
 import 'package:flutter_netease_cloud_music/model/banner.dart' as mBanner;
 import 'package:flutter_netease_cloud_music/model/banner_model_entity.dart';
@@ -21,7 +22,7 @@ class NetUtils {
     Directory tempDir = await getTemporaryDirectory();
     String tempPath = tempDir.path;
     CookieJar cj = PersistCookieJar(dir: tempPath);
-    _dio = Dio(BaseOptions(baseUrl: 'http://192.168.1.153:3000'))
+    _dio = Dio(BaseOptions(baseUrl: 'http://localhost:3000'))
       ..interceptors.add(CookieManager(cj))
       ..interceptors.add(LogInterceptor(
           request: true,
@@ -99,5 +100,10 @@ class NetUtils {
   static Future<DailySongsData> getDailySongsData(BuildContext context) async {
     var response = await _get(context, '/recommend/songs');
     return DailySongsData.fromJson(response.data);
+  }
+  /// 每日推荐歌曲
+  static Future<TopListModel> getTopListData(BuildContext context) async {
+    var response = await _get(context, '/toplist/detail');
+    return TopListModel.fromJson(response.data);
   }
 }

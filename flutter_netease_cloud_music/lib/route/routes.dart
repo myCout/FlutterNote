@@ -7,6 +7,7 @@ class Routes {
   static String login = "/login";
   static String home = "/home";
   static String dailySongs = "/daily_songs";
+  static String topList = "/top_list";
 //  static String dailySongs = "/daily_songs";
 //  static String playList = "/play_list";
 //  static String topList = "/top_list";

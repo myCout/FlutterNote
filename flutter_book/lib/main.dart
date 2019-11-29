@@ -21,8 +21,7 @@ final ThemeData kIOSTheme = ThemeData(
   primaryColor: AppColor.primary,
   dividerColor: Color(0xffeeeeee),
   scaffoldBackgroundColor: AppColor.paper,
-  iconTheme: IconThemeData(color: Colors.yellow),
-  // 设置 icon 主题色为黄色
+  iconTheme: IconThemeData(color: Colors.yellow),// 设置 icon 主题色为黄色
   textTheme: TextTheme(body1: TextStyle(color: AppColor.color333)),
   hintColor: AppColor.line, //定义下划线颜色
 );

@@ -4,6 +4,7 @@ import 'package:flutter_netease_cloud_music/pages/page_daily_song.dart';
 import 'package:flutter_netease_cloud_music/pages/page_home.dart';
 import 'package:flutter_netease_cloud_music/pages/page_login.dart';
 import 'package:flutter_netease_cloud_music/pages/page_splash.dart';
+import 'package:flutter_netease_cloud_music/pages/page_top_list.dart';
 
 // splash 页面
 var splashHandler = new Handler(
@@ -27,6 +28,13 @@ var dailySongHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
   return DailySongPage();
 });
+
+var topListHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
+  return TopListPage();
+});
+
+
 
 //// 跳转到每日推荐歌曲
 //var dailySongsHandler = new Handler(

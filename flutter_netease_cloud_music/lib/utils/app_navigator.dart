@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_netease_cloud_music/pages/page_login.dart';
+import 'package:flutter_netease_cloud_music/route/page_router.dart';
 import 'package:flutter_netease_cloud_music/route/routes.dart';
 
 import '../Application.dart';
@@ -24,22 +25,26 @@ class AppNavigator {
         clearStack: clearStack,
         transitionDuration: transitionDuration,
         transitionBuilder: transitionBuilder,
-        transition: TransitionType.fadeIn);
+        transition: TransitionType.material);//使用fadein动画会让手势返回失效
   }
 
 // 使用 Navigator.of(context).push(CustomRoute(SecondPage()))),
 
   static pushPageLogin(BuildContext context) {
-    AppNavigator.customNavigateTo(context, Routes.login, clearStack: true);
+    AppNavigator.customNavigateTo(context, login, clearStack: true);
   }
 
   static pushPageHome(BuildContext context) {
-    AppNavigator.customNavigateTo(context, Routes.home, clearStack: true);
+    AppNavigator.customNavigateTo(context, home, clearStack: true);
   }
 
   static pushPageDailySongs(BuildContext context) {
-    AppNavigator.customNavigateTo(context, Routes.dailySongs, clearStack: true);
+    customNavigateTo(context, dailySongs);
   }
+static pushPageTopList(BuildContext context) {
+    customNavigateTo(context, topList);
+  }
+
 
 //  static pushNovelDetail(BuildContext context, Book model) {
 //    AppNavigator.push(context, NovelDetailPage(bookModel: model));

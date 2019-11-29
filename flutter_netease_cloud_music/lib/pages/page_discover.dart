@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_netease_cloud_music/App/app_color.dart';
 import 'package:flutter_netease_cloud_music/model/mv.dart';
 import 'package:flutter_netease_cloud_music/model/recommend.dart';
+import 'package:flutter_netease_cloud_music/pages/page_daily_song.dart';
 import 'package:flutter_netease_cloud_music/widgets/widget_banner.dart';
 import 'package:flutter_netease_cloud_music/widgets/widget_catergory.dart';
 import 'package:flutter_netease_cloud_music/widgets/widget_future_builder.dart';
@@ -38,7 +39,17 @@ class _DiscoverPageState extends State<DiscoverPage>
                 _buildBanner(),
                 VEmptyView(20),
                 HomeCategory(callback: (index) {
-                  AppNavigator.pushPageDailySongs(context);
+                  print("dsdf============ $index");
+                  switch (index) {
+                    case 0:
+                      AppNavigator.pushPageDailySongs(context);
+                      break;
+                    case 2:
+                      AppNavigator.pushPageTopList(context);
+                      break;
+                  }
+
+//                  AppNavigator.push(context, DailySongPage());
                 }),
                 RecommendList(),
 //          VEmptyView(20),
